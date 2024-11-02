@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+    }
+    div {
+        border: 1px solid;
+        border-radius: 5px;
+        box-sizing: border-box; /* 컨텐츠+테두리+안쪽여백 값을 포함해서 너비로 설정(바깥쪽여백은 제외) */
+        /* opacity: .3; */
+        margin: 4px;
+    }
+    #header, #footer {
+        height: calc(10vh - 8px);
+        background-color: gold;
+    }
+    #aside1, #aside2 {
+        width: calc(20% - 8px);
+        height: calc(80vh - 8px);
+        background-color: cyan;
+    }
+    #main {
+        width: calc(60% - 8px);
+        height: calc(80vh - 8px);
+        background-color: salmon;
+    }
+    #aside1, #main {
+        float: left;
+    }
+    #aside2 {
+        float: right;
+    }
+    #footer {
+        clear: both;
+        position: relative;
+        top: 4px;
+    }
+    </style>
+</head>
+<body>
+    <div id="header">id="header"</div>
+    <div id="aside1">aside1</div>
+    <div id="main">main</div>
+    <div id="aside2">aside2</div>
+    <div id="footer">id="footer"</div>
+</body>
+</html>

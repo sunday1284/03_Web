@@ -1,0 +1,21 @@
+=**/*.min.js,**/node_modules/*,**/bower_components/*
+content_assist_autoactivation=true
+content_assist_autoactivation_delay=0
+content_assist_autoactivation_triggers_java=.qwertyuioplkjhgfdsazxcvbnm_QWERTYUIOPLKJHGFDSAZXCVBNM\n
+content_assist_category_order=tern.eclipse.ide.jsdt.ui.TernCompletionProposalCategory\:0\u0000org.eclipse.wst.jsdt.ui.templateProposalCategory\:1\u0000org.eclipse.wst.jsdt.ui.defaultProposalCategory\:65537\u0000org.eclipse.wst.jsdt.ui.javaNoTypeProposalCategory\:65538\u0000org.eclipse.wst.jsdt.ui.textProposalCategory\:65539\u0000
+content_assist_disabled_computers=org.eclipse.wst.jsdt.ui.spellingProposalCategory\u0000org.eclipse.wst.jsdt.ui.textProposalCategory\u0000
+eclipse.preferences.version=1
+fontPropagated=true
+org.eclipse.jface.textfont=1|Consolas|18.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Consolas;
+org.eclipse.wst.jsdt.internal.ui.navigator.layout=1
+org.eclipse.wst.jsdt.ui.editor.tab.width=
+org.eclipse.wst.jsdt.ui.exception.name=e
+org.eclipse.wst.jsdt.ui.formatterprofiles.version=11
+org.eclipse.wst.jsdt.ui.gettersetter.use.is=true
+org.eclipse.wst.jsdt.ui.javadoclocations.migrated=true
+org.eclipse.wst.jsdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.wst.jsdt.ui.text.templates_migrated=true
+proposalOrderMigrated=true
+tabWidthPropagated=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 1px solid;
+    }
+    div:first-child {
+        background-color: white;
+        float: left;
+        opacity: .1;
+    }
+    div:nth-child(2) {
+        background-color: lemonchiffon;
+        /* opacity: .3; */
+        float: left;
+    }
+    div:nth-child(3) {
+        background-color: navy;
+        float: left;
+    }
+    div:nth-child(4) {
+        background-color: gold;
+        float: right;
+    }
+    /* div:last-child는 실제 마지막 요소로 인식되지 않아 선택자미지정 */
+    /* 대신 :nth-child(index) 또는 last-of-type 또는 nth-of-type(index)를 활용 */
+    /* div:last-of-type { */
+    div:nth-of-type(5){
+        background-color: red;
+        clear: both;
+    }
+    </style>
+</head>
+<body>
+    <div>B</div>
+    <div>L</div>
+    <div>O</div>
+    <div>C</div>
+    <div>K</div>
+</body>
+</html>

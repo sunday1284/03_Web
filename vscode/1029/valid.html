@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            display: inline-block;
+        }
+        #mm2{
+            border: 1px solid black;
+            width: 170px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- action속성이 생략되었을때 현재 문서의 url위치로 정보를 보내려 시도함 -->
+    <form action="404">
+        <label for="name">이름</label>
+        <input id="name" tabindex="1" required pattern="[a-zA-Z]{1,4}"> <br>
+        
+        <label for="id">아디</label>
+        <input type="text" id="id" tabindex="2" pattern="^[a-zA-sZ]+$"> <br>
+
+        <label for="pw">비번</label>
+        <input type="password" id="pw" tabindex="3"> <br>
+
+        <label for="gd">성별</label>
+        <div id = "gd">
+            남<input type="radio" name="gd" tabindex="-1" value="남" checked>
+            여<input type="radio" name="gd" tabindex="-1" value="여"> <br>
+        </div> <br>
+        
+        <label for="bir">생일</label>
+        <input type="date"  id="bir" tabindex="-1" value="2024-10-29"><br>
+
+
+        <label for="mm1">메모1</label>
+        <textarea id="mm1" tabindex="4" rows="3" cols="23">멀티라인</textarea><br>
+
+        <label for="mm2">메모2</label>
+        <div id="mm2" tabindex="5" contenteditable></div><br> <br>
+
+        <input type="submit">
+    </form>
+
+    <script>
+        document.querySelector('#name').focus();
+    </script>
+</body>
+</html>

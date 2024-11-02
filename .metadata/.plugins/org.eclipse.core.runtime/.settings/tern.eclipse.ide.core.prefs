@@ -1,0 +1,4 @@
+defaultTernModules=guess-types,outline,yui3,ecma5,browser,browser-extension,jquery,jquery-extension,bootstrap
+eclipse.preferences.version=1
+repositories=
+used-repository-name=default

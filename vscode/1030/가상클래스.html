@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    /* 방문전링크 */
+    a:link {
+        color: blue;
+    }
+    /* 방문직후 */
+    a:visited {
+        color: olive;
+    }
+    /* 대상요소(a)에 마우스가 올라간 상태일 때 */
+    a:hover {
+        background-color: lime;
+    }
+    /* 대상요소가 활성상태(링크가 눌리는 순간)일 때 */
+    a:active {
+        background-color: #000000;
+        color: blue;
+    }
+    tr:first-child {
+        background-color: rgb(255, 0, 0);
+    }
+    /* tr:nth-child(index/방정식) */
+    tr:nth-child(2) {
+        background-color: rgb(255, 165, 0);
+    }
+    tr:nth-child(3n) {  /* 3의배수로 */
+        background-color: rgb(255, 255, 0);
+    }
+    tr:nth-child(n+4) { /*4부터 쭉*/
+        background-color: rgb(0, 128, 0);
+    }
+    tr:nth-child(5n+5){ /* 5의 배수로 5위치부터 */
+        background-color: rgb(128, 0, 102, 0.3);     
+    }
+    tr:last-child {
+        background-color: gray; /* 후순위로 작성된 것이 우선순위가 높다 */
+    }
+    </style>
+</head>
+<body>
+    <table border="">
+        <!-- 가상클래스는 요소의 상태나 구조에 의해 선택할 수 있게 함-->
+        <tr><td><a href="//w3schools.com">w3schools</a></td></tr>
+        <tr><td>2</td></tr>
+        <tr><td>3</td></tr>
+        <tr><td>4</td></tr>
+        <tr><td>5</td></tr>
+        <tr><td>6</td></tr>
+        <tr><td>7</td></tr>
+        <tr><td>8</td></tr>
+        <tr><td>9</td></tr>
+        <tr><td>10</td></tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    fieldset {
+        display: inline-block;
+    }
+    #wrapper div {
+        width: 200px;
+        height: 300px;
+        border: 4px solid lightseagreen;
+        padding: 10px;
+        margin: 10px;
+        background-image: url(../images/bara1.jpg);
+        background-size: contain;
+        overflow: auto;
+    } 
+    p {
+        background-color: white;
+        border: 3px solid rgb(179, 233, 15);
+        border-radius: 20px;
+        text-align: center;
+        margin-bottom: 200px;
+    }
+    #fixed {
+        background-attachment: fixed;
+    }
+    #local {
+        background-attachment: local;
+    }      
+    </style>
+</head>
+<body>
+    <!-- 모든 요소를 감싸는 최상위 태그에 보통 wrapper 또는 container라는 id를 명시함 -->
+    <div id="wrapper">
+        <fieldset>
+            <legend>scroll(default)</legend>
+            <div>
+                <p>div영역에</p>
+                <p>이미지는 고정</p>
+                <p>요소만 스크롤</p>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>fixed</legend>
+            <div id="fixed">
+                <p>브라우저(창,window)영역에</p>
+                <p>이미지는 고정</p>
+                <p>요소만 스크롤</p>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>local</legend>
+            <div id="local">
+                <p>이미지와</p>
+                <p>요소가</p>
+                <p>같이 스크롤</p>
+            </div>
+        </fieldset>
+    </div>
+</body>
+</html>

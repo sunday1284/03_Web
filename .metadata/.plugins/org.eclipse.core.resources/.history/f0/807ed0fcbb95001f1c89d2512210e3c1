@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- <form action="요청을 보낼 서버페이지" method="데이터를 전송하는 방식(get/post)"></form> -->
+	<form action="form.jsp" method="post">
+	
+		<!-- type=text는 기본적으로 생략 가능 -->
+		<!-- 히든필드<input type="hidden" name="hddn" value="숨겨진값"> -->
+		이름: <input type="text" name="erum" value="ㅇㅇ"
+ 				 size="5" maxlength="5"> <br> 
+		별명: <input type="text" name="alias" value="왕">	
+				<!-- <input type = 'password'> <br> -->
+				<input type = "radio" name ="gd" value="f">여 <br>
+				<input type = "radio" name ="gd" value="m">남 <br>
+				
+				<input type = "checkbox" name ="hobby" value="축구">축구 <br> 
+				<input type = "checkbox" name ="hobby" value="야구">야구 <br> 
+				<input type = "checkbox" name ="hobby" value="골프">골프 <br> 
+				
+	<!-- 				<input type = "file"> <br> -->
+					 
+		
+		
+<!-- 		<input type="submit" value="서버로 정보 전송"> submit을 하면 action으로 감
+-->		<!-- <input type ="button" value= "버튼 이름" onclick="btnClick()"> -->
+
+		<input type="image" src="btn.PNG" alt = "이미지버튼">
+		
+		<!-- form내부의 button은 제출 기능을 갖는다 -->
+		<!-- form내부의 button에 type-button 속성 정의시 제출 기능을 읽는다. -->
+		<button type ="button">버튼1</button>
+	</form>
+		<input type="submit" value="submit(폼 내부에서만 기능 실행)">
+		<input type = "reset" value="reset(폼 내부에서만 기능 실행)">
+		<!-- form외부의 button은 기능이 없다(순수한 버튼) -->
+		<button>버튼2</button>
+	<script>
+	//함수 정의
+	function btnClick(){
+		/* alert("잘 연결되는지 확인"); */
+		// 서버페이지로 전송하는 기능 구현
+		document.getElementsByTagName("form")[0].submit(); 
+	}
+	
+	</script>
+</body>
+</html>

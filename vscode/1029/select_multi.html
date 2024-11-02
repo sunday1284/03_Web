@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- select#sel>option*5 -->
+    <select id="sel" multiple size="7" onclick=f_sel()>
+        <option value="heartping">하츄핑</option>
+        <option value="happing">해핑</option>
+        <option value="shyping">슈핑</option>
+        <option value="lovping">바네핑</option>
+        <option value="nonping">시진핑</option>
+        <option value="coolping">쿨핑</option>
+        <option value="sleeping">코자핑</option>
+    </select>
+
+    <script>
+    function f_sel(){
+
+       var sel =  document.getElementById('sel');
+       //console.log(sel.options);
+       var rst = "";
+       //for문 내부에 if문으로 최종결과 출력하기 -checked >> selected변경해서 사용
+       for(var i = 0; i<sel.options.length; i++){
+            if(sel.options[i].selected){
+               rst += document.querySelector('[value=' +sel.options[i].value+']').innerText;
+            }
+       }
+       console.log("결과 >>" +rst);
+       
+    }
+    
+    </script>
+</body>
+</html>
