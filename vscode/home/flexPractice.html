@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin : 0;
+        padding: 0;
+    }
+    #container {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+    }
+    .col {
+        border: 1px dotted red;
+        display: flex;
+        flex-direction: column;
+    }
+    .w10 {
+        width: 10%;
+        align-items: center;
+    }
+    .w20 {
+        width: 20%;
+    }
+    .w70 {
+        width: 70%;
+    }
+    .icon {
+        border: 1px dotted green;
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+    }
+    .row {
+        border: 1px dotted blue;
+        margin: 5px 10px;
+    }
+    .h40 {
+        flex: 20 auto;
+    }
+    .h20 {
+        flex: 10 auto;
+    }
+    .h80 {
+        flex: 40 auto;
+    }
+    </style>
+</head>
+<body id="container">
+    <div class = "col w10">
+        <div class="icon">아이콘 1</div>
+        <div class="icon">아이콘 2</div>
+        <div class="icon">아이콘 3</div>
+    </div>
+    <div class="col w20">
+        <div class="row h40">영역1</div>
+        <div class="row h40">영역2</div>
+        <div class="row h20">영역3</div>
+    </div> 
+    <div class="col w70">
+        <div class="row h80">영역4</div>
+        <div class="row h20">영역5</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="f_click()">누름</button>
+
+    <script>
+        function f_click(){            
+             document.write("아무거나"); //새문서에 덮어씌움 >> 기존 요소가 사라짐 주의
+            //따음표 안에 따음표 사용시 교차로 사용해야 문법오류가 발생하지 않음
+            //또는 탈출 문자로 활용해야함
+             document.write("<img src=\"../images/ala.jpg\" alt=\"알라\">");
+        }
+    </script>
+</body>
+</html>

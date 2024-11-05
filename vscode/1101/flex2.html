@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 1px solid;
+    }
+    #flexContainer {
+        border-color: gold;
+        padding: 10px;
+        display: flex;
+    }
+    .flexItem {
+        border-color: salmon;
+        width: 50px;
+
+        /* flex 기본값 - 0확장안함 1축소함 auto요소에 설정된 기본 값을 따름;  */
+        /* flex-grow: 1; */ /* 확장함 */
+        flex-shrink: 1;
+        flex: 1; /* 1 1 0 - 확장하고 사이즈는 균등하게 처리 / basis0일때 균등한 사이즈로*/
+    }
+    .flexItem:first-child {
+        width: 20px;
+    }
+    .flexItem:nth-child(2) {
+        width: 100px;
+    }
+    .flexItem:last-child {
+        width: 300px;
+    }
+    /* #flexContainer1 {
+        border-color: gold;
+        padding: 10px;
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: flex-end;
+        align-content: center;
+    } */
+    /* .flexItem1 {
+        border-color: purple; // flex item들은 inline형태로 변경됨 
+        height: 30px;
+        width: 200px;
+        flex-shrink: 0; // 축소하지 않음 
+    } */
+    </style>
+</head>
+<body>
+<!-- 
+    flexContainer
+        flex-direction : 주축 설정(row수평, column수직)
+        flex-wrap : 영역바깥으로 나가는 컨텐츠 감쌀지 여부
+        flex-flow(flex-direction + flex-wrap 축약)
+        justify-content : 주축의 정렬 
+        align-items : 한 라인의 교차축 정렬
+        align-content : 여러 줄의 교차축 정렬
+        
+    flexItem 
+        flex (flex-grow + flex-shrink + flex-basis 축약)
+        flex-grow : 아이템의 확장
+        flex-shrink : 아이템의 축소
+        flex-basis : 아이템의 기본 크기
+-->
+    <div id="flexContainer">
+        <div class="flexItem">1</div>
+        <div class="flexItem">2</div>
+        <div class="flexItem">3</div>
+    </div>
+</body>
+</html>
