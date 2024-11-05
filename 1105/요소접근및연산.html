@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    첫번째 입력 값: <input id="firstVal"><br>
+    두번째 입력 값: <input id="secondVal"><br>
+    <input type="button" value="계산 결과>>" onclick="calc()">
+    <input id="sum">
+    <script>
+    function calc(){
+        //첫번째 입력값 얻기 
+        // let val1 = document.getElementsByName("input")[0].value;
+        let val1 = document.getElementById('firstVal').value; //get
+        //두번째 요소의 입력값 얻기
+        let val2 = parseInt(document.querySelector('#secondVal').value); 
+
+        //두 값을 합쳐 합계 요소 영역에 출력하기
+        let result = parseInt(val1) + val2;
+        console.log("결과>>>> " + result);
+        
+        //결과 영역 얻기
+        document.querySelectorAll('input')[3].value = result; //set
+    }
+    </script>
+</body>
+</html>

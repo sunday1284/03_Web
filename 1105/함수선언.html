@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //표현식(무명/익명함수) - 브라우저 런타임과 동시에 선언됨
+        let fnc1 = function () {
+            alert("표현식함수");
+        };
+
+        //선언식(기명함수) - 브라우저 런타임 이전에 선언됨
+        function fnc2() {
+            alert("선언식함수");
+        }
+
+        // fnc1();
+        // fnc2();
+
+        //화살표함수(ES6), java(람다함수)
+        // >>함수를 정의하는 function키워드 없이 함수를 생성할 수 있게 하며,
+        // >>return키워드 없이 결과를 자동으로 반환해준다.
+
+        //변수 = () =>{};
+        //하나의 매개변수는 소괄호 생략가능
+        //매개변수가 없거나 여러 개일때는 반드시 소괄호 사용
+        //실행문이 한줄(;으로 구분된 값)일 때 중괄호 생략가능
+        let arrow = (a,b,c,d) =>
+            "리턴구문없이 자동으로 결과 반환"  
+            // alert("화살표함수~~" + a + b + c + d);
+        
+        // arrow('a','b','c'); //무시되고
+        console.log(arrow());
+
+        //즉시실행함수
+        //전역의 오염없이 정보의 초기화를 진행하고 싶을 때 많이 활용됨
+        (function(p_bool){
+            // alert("즉시실행하므로 이름없이");
+            console.log(p_bool);
+            if(p_bool){
+                //정보 초기값 셋팅1
+                
+            }
+            //정보 초기값 셋팅2
+        })(confirm("초기화?"));
+    </script>
+</body>
+
+</html>

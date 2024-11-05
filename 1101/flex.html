@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 1px solid;
+    }
+    #flexContainer {
+        border-color: red;
+        height: 300px;
+        padding: 4px;
+        /* 적용시 자식요소들이 inline형태로 변화 */
+        display: flex; 
+
+        /* flex-flow: row wrap; */
+        /* flex-wrap: wrap; */
+
+        /* flex-wrap: wrap;으로 둘 이상의 행을 정렬시킬 때 사용 */
+        /* align-content: space-between; */
+
+        /* x축 컨텐츠 정렬 */
+        justify-content: space-around;
+        /* y축 컨텐츠 정렬 */
+        align-items: baseline;
+    }
+    .flexItem {
+        border-color: blueviolet;
+        /* flex속성: -grow, -shrink, -basis를 축약하는 속성  */
+        /* flex: 0 1 auto; */
+        /* flex-shrink: 0; */ /* 축소하지 않음 */
+        flex-basis: 100px;
+    }
+    </style>
+</head>
+<body>
+    <div id="flexContainer">
+        <div class="flexItem" style="width: 50px;">짧은</div>
+        <div class="flexItem" style="width: 100px;">중간</div>
+        <div class="flexItem" style="width: 500px;">긴</div>
+    </div>
+</body>
+</html>

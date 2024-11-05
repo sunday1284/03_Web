@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    //엄격모드 - 가장 모던한 (표준적인 스크립트)방식대로 작성되지 않은 코드의 오류를 지적하는 기능
+    "use strict";
+
+    var v_varb = "전역변수";
+
+    function fuc(){
+        var v_varb = "지역변수";  //키워드 없으면 전역변수에 재할당되는 방식으로 값형태가 변형됨
+        alert(v_varb);
+    }
+    fuc(); //호출
+    alert(v_varb);
+
+
+</script>
+</body>
+</html>

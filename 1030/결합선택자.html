@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    body *{
+        border: 1px solid gray;
+        margin: 20px;
+    }
+    /* 자식중(>)에서만 */
+    /* 자식과 자손을 모두 (공백) */
+    /* #parent>div{ */
+    #parent div {
+        border: 3px outset gold;
+    } 
+    /* 기준선택자 바로 다음 형제만(+) */
+    #second+div {
+        border-color: red;
+    }
+    /* 기준선택자 다음의 모든 형제(~) */
+    /* #second~div { */
+    #second~* {
+        /*자식3,5는 우선순위에 가려지므로 우선순위를 important로 당겨줌 */
+        border-style: solid !important; 
+        border-color: purple !important;
+        border-width: 4px !important; 
+    }
+    </style>
+</head>
+<body>
+    <!-- 들여쓰기 중요 -->
+    <div id="parent">
+        <div>자식1</div>
+        <div id ="second">자식2
+            <div>자손1</div>
+            <p>자손(p)2</p>
+            <div>자손3</div>
+        </div>
+        <div>자식3</div>
+        <p>자식(p)4</p>
+        <div>자식5</div>
+    </div>
+</body>
+</html>

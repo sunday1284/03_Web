@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 외부CSS -->
+     <link rel="stylesheet" href="../css/myStyle.css">
+    <!-- 내부CSS -->
+    <style> </style>
+    <script>
+    //창(window)을 구성하는 모든 정보들을 로딩한 후 함수를 실행한다.
+    window.onload = function(){ //window -> 자바의 Object와 똑같은 조상 객체
+        var day = new Date(); //날짜 객체생성 후 변수에 담음
+        var now = day.toLocaleString(); //읽기 쉬운 형태로 가공 후
+        console.log(day);
+        console.log(now);
+        //id가 result인 div요소의 내부에 now변수의 값을 대입해보자
+        document.getElementById('result').innerText = now;
+    }
+    </script>
+</head>
+<body>
+    <h1>Hello</h1>
+    <div id="result"></div>
+    <!-- 요즘 코드는 <script>요소의 배치를 현재위치(문서의 끝)으로 많이 사용하므로 
+        추가적인 문서준비코드(window,onload등)의 사용이 필요 없지만,
+        때에 따라 script를 상단에 배치할 경우가 있을 때 문서준비 코드의 활용은 필수
+    -->
+</body>
+</html>

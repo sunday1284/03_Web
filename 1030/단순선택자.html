@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 요소(tag)선택자 */
+        div{
+            /* border-style: solid;
+            border-color: red;
+            border-width: 2px; */
+            border: 5px orange double;
+        }
+        /* id선택자 */
+        #elsa {
+            color: blue;
+        }
+        /* class선택자 */
+        .dsn {
+            direction: rtl;
+        }
+        /* 전체선택자 */
+        *  {
+            border: 1px dotted gray;
+        }
+        /* 그룹선택자 */
+        p, #px {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="dsn">알라딘</div>
+    <div class="dsn">뮬린</div>
+    <p class="dsn">라이언킹</p>
+    <div id="elsa" class="dsn">겨울왕국</div>
+    <div id="px" class="dsn">인사이드아웃</div>
+</body>
+</html>

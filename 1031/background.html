@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+    }
+    #parent {
+        background-color: gold;
+        width: 100%;
+        height: 100vh; /*  viewport-Height 보여지는 영역에 100% */
+    }
+    #content {
+        border: 20px dashed navy;
+        padding: 20px;
+        width: 90%;
+        height: 90%; /* 부모영역의 높이값을 상대로 %단위를 사용할 수 있다. */
+        box-sizing: border-box;
+        /* background속성넣기 */
+        background-color: purple;
+        background-image: url(../images/ala.jpg);
+        background-repeat: no-repeat;
+        background-size: 50%; /* 이미지가 영역에서 100%로 보이게 */
+        /* background-position: left bottom; */
+        /* background-position: 50% 0%; */
+        /* 페인팅 될 영역 */
+        background-clip: border-box;
+        /* 이미지가 위치할 시작점 */
+        background-origin: content-box;
+    }
+    #content2 {
+        border: 10px dotted red;
+        height: 100%;
+        box-sizing: border-box;
+        /* 축약방식 background */
+        /* color image position/size repeat origin clip attachment */
+        /* 반드시 지킬 규칙1 - position/size는 같이 명시할 것(position단독 사용가능, size는 반드시 position과 같이..) */
+        /* 반드시 지킬 규칙2 - origin clip의 순서를 지킬 것 */ 
+        background: url(../images/lion.png)   rebeccapurple 50% 50%/30% repeat-y;
+    }
+    /* 여러 이미지를 축약으로 삽입 */
+    #content3 {
+        height: 100%;
+        padding: 10px;
+        /* 여러 이미지 삽입시 첫번째 항목이 정의된 내용으로부터 첫 레이어로 표현되며, 마지막으로 정의된 이미지만 배경색을 정의 할 수 있다. */
+        background: url(../images/lion.png)   0% 0%/30% repeat-y content-box border-box, 
+                url(../images/lion.jpg) 0% 0%/30% repeat-x,
+                url(../images/bara1.jpg) 0% 20%/20% repeat-x,
+                url(../images/bara2.jpg) 0% 40%/20% repeat-x,
+                url(../images/bara4.jfif) 0% 60%/20% repeat-x,
+                url(../images/bara6.webp) 0% 80%/20% repeat-x lightskyblue;
+    }
+    /* 투명이미지 */
+    #content4 {
+        width: 60%;
+        height: 60%;
+    }
+    /* opacity속성은 상속되기 때문에
+    투명도가 적용된 이미지만 가상요소에 따로 배치시킴 */
+    #content4::before {
+        background-image: url(../images/bara1.jpg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: .6;
+    }
+   /*  가상요소에 배치된 이미지가 상위로 올라와 기존 텍스트 컨텐츠를 가리므로
+    absolute를 사용해 가상요소보다 상위로 올려줌 */
+    span {
+        position: absolute;
+    }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="content4">
+            <span>피카츄★</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- select#sel>option*5 -->
+    <select id="sel" onchange="f_sel(this)">
+        <option value="0">선택</option>
+        <option value="heartping">하츄핑</option>
+        <option value="happing">해핑</option>
+        <option value="shyping">슈핑</option>
+        <option value="lovping">바네핑</option>
+        <option value="nonping">시진핑</option>
+        <option value="coolping">쿨핑</option>
+        <option value="sleeping">코자핑</option>
+    </select>
+
+    <script>
+    
+    function f_sel(p_this){
+
+        // select요소의 단일선택 항목은 value속성으로 쉽게 접근가능하다
+        // console.log(sel.value); //요소를 쉽게 얻지만 권장 방식은 아님
+        // console.log(document.getElementById('sel').value); //표준방식
+        // console.log(p_this.value); //자기참조변수인 this를 통해 매개변수로 전달받음
+
+        //innerHTML, innerTest 속성
+        // console.log(p_this.innerText); //선택요소의 전체적인 컨텐츠가 일괄 반환됨
+
+        //요소 사이(시작태그와 종료태그) 사이 컨텐츠 정보 얻기
+        // 확보된 정보 (value속성을 통한 단일 정보) >> 를 가지고 요소를 얻고 >> 내부 정보를 innerTest로 취득하기
+        // querySelector('[속성명=속성값]')
+        console.log(document.querySelector('[value=' + p_this.value + ']').innerText);
+
+
+    }   
+    </script>
+</body>
+</html>
