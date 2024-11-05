@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //사용자에게 정보를 얻기위한 대화상자
+    // let info = prompt("필수","옵션"); //취소시 null반환
+    // console.log(info);  
+
+
+    //덧셈예제
+    let su1 = prompt("수1을 입력하세요",'정수만 입력');
+    let su2 = prompt("수2을 입력하세요");
+
+    //+더하기연산자는 문자열과 만났을때 문자열 결합을 일으키므로 연산시 주의
+    //string타입 => number 타입 변환을 위해 parseInt(변수)
+    console.log(typeof parseInt(su1), typeof parseInt(su2));
+    document.write(parseInt(su1) + parseInt(su2));
+
+    //null끼리 연산되었을 때 NaN(Not a Number) 키워드로 값의 형태를 표현
+    
+</script>
+</body>
+</html>
