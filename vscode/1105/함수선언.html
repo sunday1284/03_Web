@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <div>1111</div>
     <script>
 
         //표현식(무명/익명함수) - 브라우저 런타임과 동시에 선언됨
@@ -39,15 +40,21 @@
 
         //즉시실행함수
         //전역의 오염없이 정보의 초기화를 진행하고 싶을 때 많이 활용됨
-        (function(p_bool){
-            // alert("즉시실행하므로 이름없이");
-            console.log(p_bool);
-            if(p_bool){
-                //정보 초기값 셋팅1
+        window.onload = function(){
+            (function(p_bool){
+                // alert("즉시실행하므로 이름없이");
+                console.log(p_bool);
+                let info = ['초기화',null];
+                if(p_bool){
+                    //정보 초기값 셋팅1
+                    document.querySelector('body').innerText = info[0];
+                    return; //함수를 종료
+                }
+                //정보 초기값 셋팅2
+                document.querySelector('body').innerText = info[1]; //null
                 
-            }
-            //정보 초기값 셋팅2
-        })(confirm("초기화?"));
+            })(confirm("초기화?"));
+        }
     </script>
 </body>
 

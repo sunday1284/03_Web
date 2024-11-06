@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    span {
+        border: 2px dotted gold;
+    }
+    </style>
+</head>
+<body>
+    <input size="2">
+    <input size="2">
+    <input type="button" value="+"  onclick="f_calc('+')">
+    <input type="button" value="-"  onclick="f_calc('-')">
+    <input type="button" value="*"  onclick="f_calc('*')">
+    <input type="button" value="/"  onclick="f_calc('/')">
+    <span>결과</span>
+
+    <script>
+    //입력양식 요소의 값 얻기
+    let inputTxt = document.querySelectorAll('[size]');
+    let v_span = document.querySelector('span');
+
+    function f_calc(p_oprt){
+
+        //null check
+        if(inputTxt[0].value == "" && inputTxt[1].value == "") return;
+
+        //NaN: Not a Number, 표현 불가한 수치형 결과를 나타내는 값
+        //isNaN() - 인수를 number타입으로 변환후 NaN인지 여부를 boolean으로 변환
+        console.log(isNaN(1));  //숫자는 number타입이므로 NaN이 아니라서 false반환
+        console.log(isNaN("1")); //문자이지만 number타입으로 변환시 숫자이며 NaN이 아니므로 false
+        console.log(isNaN("ㅇ")); //문자를 number타입으로 변환시 NaN처리되며 true반환
+
+        //조건문 - if
+        if(!isNaN(inputTxt[0].value)){ //문자입력시 true반환 >> !연산자로 값을 뒤집어..
+            //조건문 - switch
+            switch(p_oprt){
+                case '+':
+                    //함수 호출 후 반환값을 최종 출력...
+                    v_span.innerText = f_add();
+                    break;
+                case '-':
+                    v_span.innerText = f_sub();
+                    break;
+                case '*':
+                    v_span.innerText = f_mtp();
+                    break;
+                case '/':
+                    v_span.innerText = f_div();
+                    break;
+            }
+
+        }else{
+            alert("숫자만 입력가능합니다!!!");
+        }
+
+
+    }
+
+   
+    //선언식
+    function f_add(){
+       return parseInt(inputTxt[0].value) + parseInt(inputTxt[1].value);
+    }
+    //표현식
+    let f_sub = function(){
+        return inputTxt[0].value - inputTxt[1].value;
+    };
+    //화살표함수
+    let f_mtp = () => {
+        return inputTxt[0].value * inputTxt[1].value;
+    };
+
+    let f_div = () => (inputTxt[0].value / inputTxt[1].value).toFixed(2);
+    </script>
+</body>
+</html>

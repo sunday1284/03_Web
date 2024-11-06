@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<script>
+    const anm = {
+        dog : '강아지',
+        'cat' : '고양이',
+        'duck' : '오리'
+    };
+
+
+    // const {dog, cat, duck} = anm;
+    // console.log(cat);
+    
+    // const {duck, cat, dog} = anm;
+    // console.log("순서는 바껴도 됌(키와 변수명만 일치시키자)", cat);
+    
+    // const {duck} = anm;
+    // console.log(duck);
+
+    const {duck, ...rest} = anm;
+    console.log(duck, rest);
+</script>

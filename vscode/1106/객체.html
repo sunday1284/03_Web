@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<body>
+    <button>리터럴 객체 생성</button>
+    <button>내장객체의 생성자 이용 객체 생성</button>
+    <button>생성자 정의 객체 생성</button>
+<script>
+
+    //이벤트 부여방식을 스크립트에서 정의 - 대상요소.addEventListener(이벤트,콜백함수)
+    document.querySelector('button').addEventListener('click',function(){
+
+        //리터럴을 이용한 객체 생성 ({key:value}) 
+        const dripCoffee = {
+            제품명     :"탄자니아",
+            '식품유형' : "커피",
+            "내용량"   : "10g",
+            유통기한   : new Date("2025.10.14"),
+            brew      : function(){
+                //parseInt() - 정수를 변환처리 / 2.숫자와 문자가 결합된 정보에서 문자를 뺀 순수한 정수만 제공
+                return "원두를 뜨거운 물로 1분간 불린 후 " + (parseInt(this.내용량) * 12) + "ml 추출";
+            },
+            //ES6축약 정의방식 
+            caution(){ //주의 문구 함수
+                return this.식품유형 + "추출시 화상에 주의";
+            }
+        };
+
+        console.log(dripCoffee);
+
+        //객체의 속성과 메소드에 접근할 때 1.점 표기법 2.대괄호 표기법
+        console.log(dripCoffee.제품명);
+        console.log(dripCoffee["제품명"]);
+        console.log(dripCoffee.brew); //정의된 함수 자체 제공
+        console.log(dripCoffee.brew()); //호출을 통해 반환값을 표현
+        console.log(dripCoffee["caution"]());
+
+    });
+
+    let v_btns = document.querySelectorAll('button'); //유사배열로 반환
+    v_btns[1].addEventListener('click',function(){
+        //내장객체의 생성자를 이용한 객체 생성
+        let maxim = new Object();   //객체의 껍데기만 생성되어있음 like { }
+        maxim.제품명 = "맥심 화이트 골드";
+        maxim.내용량 = "11.7g";
+        maxim.try = function(){
+            return parseFloat(this.내용량)*8 + "ml 정도의 뜨거운 물을 부어 섭취";
+        }
+        console.log(maxim.내용량);
+        console.log(maxim['try']); //메소드 자체를 제공
+        console.log(maxim['try']()); //메소드 반환값을 제공
+
+    });
+
+    v_btns[2].addEventListener('click',function(){
+
+        //생성자 함수 정의 후, 
+        function CustomObj(teamNm, headCnt, fanClub){
+            this.팀명 = teamNm;
+            this.인원수 = headCnt;
+            this.팬클럽명 = fanClub;
+            this.info = function(){
+                // return this.팀명 + "(" + this.인원수 + ") - " + this.팬클럽명;
+                //ES6 템플릿리터럴 - (`)백틱기호를 이용해서 하나의 공간안에 문자열과 변수를 모두 작성가능한 형태 
+                return `${this.팀명} (${this.인원수}) - ${this.팬클럽명}`;
+
+            }
+        }
+        //객체 생성
+        const instance1 = new CustomObj('홍길동',1,'이몽룡');
+        
+        // console.log(instance1.info());
+        
+        const instance2 = new CustomObj('톰',6,'심슨');
+        // console.log(instance2.info());
+        
+        instance1.히트곡 = '호랑나비'; //객체에 개별적인 속성 추가 
+        CustomObj.prototype.분류 = "가수"; //객체에 프로토타입에 속성 추가
+
+    /*
+        prototype
+        생성자 함수에 정의된 모든 객체가 공유할 원형
+        this를 통해 정의된 속성/메소드는 각각의 인스턴스에 새롭게 생성되므로 메모리 낭비가 생길 수 있음
+        prototype으로 정의된 경우 상속받는 모든 객체가 같은 속성을 공유하기 때문에 
+        공통적인 항목은 prototype을 이용해 한번만 생성되도록 하는 것이 좋다.
+    */
+
+   
+        //메소드 추가하기
+        CustomObj.prototype.info2 = function(hitSong){
+
+            if(hitSong){
+                this.히트곡 = hitSong;
+            }else{
+                this.히트곡 = "없음";
+            }
+
+            // return this.분류 + " | " +this.팀명 + "(" + this.인원수 + ") - " + this.히트곡 + " | " + this.팬클럽명; //문자열더하기방식
+            return `${this.분류} | ${this.팀명} (${this.인원수}) -${this.히트곡} | ${this.팬클럽명}`; //템플릿리터럴 방식
+        }
+        console.log(instance1.info2('호랑나비'));
+        console.log(instance2.info2('asdq'));
+
+        //객체의 각 key정보, value정보, entries정보를 배열로 반환하는 메소드
+        // Object.keys(), Object.values(), Object.entries()
+        
+        console.log(Object.keys(instance1)); //객체의 key정보만 변환
+        console.log(Object.values(instance1)); //객체의 values정보만 변환
+        console.log(Object.entries(instance1));//객체의 key,values정보만 변환
+        
+        for(val of Object.values(instance1)){
+        // for(val of instance1){
+            console.log(">>>", val);
+        }
+
+
+
+        //속성, 메소드 삭제하기 - delete 키워드 사용 
+        delete instance1.팬클럽명;
+        console.log(instance1);
+        console.log(instance1.info());
+        delete CustomObj.prototype.info2();
+        console.log(instance2.info2());
+});
+
+
+    
+    
+</script>
+</body>

@@ -27,7 +27,7 @@ function f_arr2(){
     document.querySelector('div').innerText = strArr;
 
 
-    const v_arr3 = new Array("듈리","고길동","또치","도우너");
+    const v_arr3 = new Array("둘리","고길동","또치","도우너");
     
     //forEach()사용
     let strArr2 = "";
