@@ -1,10 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>HP 노트북</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            width: 100%;
+            background-color: #d7ca35;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 40px;
+            color: #d7ca35;
+            text-align: center;
+            margin: 20px 0;
+            width: 100%;
+        }
+        .notebook {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+        }
+        .notebookinfo {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+        .notebookinfo h4 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .notebookinfo p {
+            color: #333;
+            line-height: 1.6;
+        }
+        .notebookinfo a {
+            color: #cdd8f3;
+            text-decoration: none;
+        }
+        .notebookinfo a:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #d7ca35;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+        }
+        .back-button:hover {
+            background-color: #f5e20e;
+        }
+        .p-button {
+            display: block;
+            text-align: center;
+            margin: 10px auto;
+            padding: 5px 10px;
+            background-color: #d7ca35;
+            color: rgb(247, 248, 248);
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+        }
+        b {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="header">
+        <h1>HP 노트북</h1>
+    </div>
+    <div class="container">
+        <img src="../WebSiteProject/imageProject/이미지4레노버.avif" alt="레노버 대표 노트북" class="notebook">
+        <div class="notebookinfo">
+            <h4>상품 상세 정보</h4>
+            <p>최신 HP 오멘 16 슬림 노트북은 인텔 i7-13세대 CPU와 RTX-4060 그래픽을 탑재하여 다른 노트북보단 성능면에선 비교적 저조하지만, 16인치 치고 가벼운 무게와 가성비 좋은 모델로 들고 다니면서 게임하기 적합한 노트북입니다.</p>
+            <p>노트북 구성/ 운영체제(OS): 윈도우11홈 / 용도: 게임용 , 그래픽작업용 / 화면정보 40.6cm(16인치) / 2560x1600(WQXGA) / 400nit / 주사율: 240Hz / CPU 인텔 / 코어i7-13세대 / i7-13700HX (2.1GHz) / 16코어(8P+8E) / 램 DDR5 / 램 용량: 32GB / 4800MHz / 램 교체: 가능 / 그래픽 외장그래픽 / RTX4060 / TGP: 130W / VRAM:8GB / 논 옵티머스 / 저장장치 M.2(NVMe) / 1TB / 저장 슬롯: 1개 / 네트워크 무선랜: 802.11ax(Wi-Fi 6E) / 유선랜: 기가비트 / 영상입출력 HDMI 2.1 / DP Alt Mode / 웹캠(FHD) / 단자 썬더볼트4: 2개(USB-C겸용) / USB-A: 2개 / 파워 배터리: 70Wh / 어댑터: 230W / 전원: DC / 주요제원 두께: 19.9mm / 무게: 2.09kg / 쿨링팬: 2개 / 색상: 화이트</p>              
+            <a href="https://prod.danawa.com/info/?pcode=20015240&keyword=hp+%EA%B2%8C%EC%9D%B4%EB%B0%8D+%EB%85%B8%ED%8A%B8%EB%B6%81&cate=112758#bookmark_product_information" class="p-button"><b>노트북상세보기</b></a>  
+        </div>
+    </div>
+    <a href="https://search.danawa.com/dsearch.php?query=hp+%EA%B2%8C%EC%9D%B4%EB%B0%8D+%EB%85%B8%ED%8A%B8%EB%B6%81" class="back-button"><b>HP 다른 노트북 보기</b></a>
+    <a href="http://127.0.0.1:5500/WebSiteProject/Web.html" class="back-button"><b>메인 화면으로 돌아가기</b></a>
 </body>
 </html>

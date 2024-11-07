@@ -6,59 +6,71 @@
     <title>게이밍 노트북 사이트</title>
     <style>
         body {
-            height: auto;
-            background-image: url(../WebSiteProject/imageProject/노트북1.jpg);
-            background-size: unset;
-            /* 배경 이미지가 화면에 맞게 조정됨 */
-            background-repeat: no-repeat;
-            /* 배경 이미지가 반복되지 않음 */
-            object-fit: contain;
-            /* 이미지가 잘리지 않고 전체를 표시 */
-            
+            width: 40%; 
+            background-color: rgb(215, 219, 209);
+            background-image: url(../WebSiteProject/imageProject/노트북1.png);
+            background-size: 70%; /* 배경 이미지의 크기 조절 */
+            background-repeat: no-repeat; /* 배경 이미지가 반복되지 않음 */
+            background-position: right center; /* 배경 이미지를 오른쪽 중앙에 배치 */
+            object-fit: cover; /* 이미지가 잘리지 않고 전체를 표시 */
+            margin: auto; /* 중앙 정렬 */
+            height: 100vh; /* 뷰포트 높이에 맞게 설정 */
         } 
         .title {
-            font-size: 35px;
-            font: bolder;
+            font-size: 50px;
+            font-weight: bolder;
+            text-align: center;
+            padding-top: 10px;
         }
 
-        div {
-            font: optional;
-            padding: auto;
-            border: 10px;
-            height: 30%;
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* 노트북 관련 이미지를 불러올 때 이 클래스를 씀*/
-        .notebook {
-            width: 50%;
-            /* 이미지가 부모 요소의 너비에 맞게 조정됨 */
-            max-width: 600px;
-            /* 최대 너비를 설정하여 이미지 크기 제한 */
-            height: auto;
-            /* 비율을 유지하면서 이미지 높이 조정 */
-            object-fit: contain;
-            /* 이미지가 잘리지 않고 전체를 표시 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgb(6, 243, 105);
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
         }
 
         .notebookinfo {
-            padding: 10px;
             font-size: 20px;
-            font-display: initial;
-            height: 20px;
-            border: 10px;
-            text-align: center; /* 텍스트 중앙 정렬 */ 
-            background-color: rgba(255, 255, 255, 0.8); /* 배경 색상을 반투명으로 설정 */ 
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
         }
+
         a {
-            text-decoration: none; 
+            text-decoration: none;
+            color: #007bff;
         }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
         p {
             font-family: 'Arial Narrow';
             width: fit-content;
             padding: 10px;
+            text-align: center;
         }
-
-        /*글자 꾸미기*/
 
         .color {
             background-color: antiquewhite;
@@ -68,25 +80,20 @@
 
 <body>
     <h1 class="title">게이밍 노트북 사이트</h1>
-    <div>
-        <!-- <h2><p><a href="http://127.0.0.1:5500/WebSiteProject/WebNotebook.html">노트북 전체 정보 보기</a></p></h2> -->
+    <div class="container">
         <h2>
             <p><a href="https://prod.danawa.com/list/?cate=11351624">노트북 전체 정보 보기</a></p>
         </h2>
-    </div>
-    <div>
         <table>
-            <tb>
+            <tbody>
                 <tr>
                     <th class="notebookinfo"><a href="http://127.0.0.1:5500/WebSiteProject/ASUS.html">ASUS</a></th>
                 </tr>
                 <tr>
-                    <th class="notebookinfo"><a
-                            href="http://127.0.0.1:5500/WebSiteProject/%EC%97%90%EC%9D%B4%EC%84%9C.html">에이서</a> </th>
+                    <th class="notebookinfo"><a href="http://127.0.0.1:5500/WebSiteProject/%EC%97%90%EC%9D%B4%EC%84%9C.html">에이서</a></th>
                 </tr>
                 <tr>
-                    <th class="notebookinfo"><a
-                            href="http://127.0.0.1:5500/WebSiteProject/%EB%A0%88%EB%85%B8%EB%B2%84.html">레노버</a></th>
+                    <th class="notebookinfo"><a href="http://127.0.0.1:5500/WebSiteProject/%EB%A0%88%EB%85%B8%EB%B2%84.html">레노버</a></th>
                 </tr>
                 <tr>
                     <th class="notebookinfo"><a href="http://127.0.0.1:5500/WebSiteProject/MSI.html">MSI</a></th>
@@ -94,11 +101,9 @@
                 <tr>
                     <th class="notebookinfo"><a href="http://127.0.0.1:5500/WebSiteProject/HP.html">HP</a></th>
                 </tr>
-            </tb>
-
+            </tbody>
         </table>
     </div>
-    <!-- 이미지를 넣을 때 쓰이는 문법 1.notebook 클래스를 만듦 2.노트북 클래스 디자인 지정 3.img경로를 가져와 노트북 이미지를 불러옴 -->
 </body>
 
 </html>

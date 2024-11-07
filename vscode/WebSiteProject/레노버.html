@@ -1,10 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>레노버 노트북</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #d6cbcb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            width: 100%;
+            background-color: #06c98b;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 40px;
+            color: #06c98b;
+            text-align: center;
+            margin: 20px 0;
+            width: 100%;
+        }
+        .notebook {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+        }
+        .notebookinfo {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+        .notebookinfo h4 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .notebookinfo p {
+            color: #333;
+            line-height: 1.6;
+        }
+        .notebookinfo a {
+            color: #cdd8f3;
+            text-decoration: none;
+        }
+        .notebookinfo a:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #06c98b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+        }
+        .back-button:hover {
+            background-color: #06c98b;
+        }
+        .p-button {
+            display: block;
+            text-align: center;
+            margin: 10px auto;
+            padding: 5px 10px;
+            background-color: #06c98b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+        }
+        b {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="header">
+        <h1>레노버 노트북</h1>
+    </div>
+    <div class="container">
+        <img src="../WebSiteProject/imageProject/이미지4레노버.avif" alt="레노버 대표 노트북" class="notebook">
+        <div class="notebookinfo">
+            <h4>상품 상세 정보</h4>
+            <p>최신 레노버 LEGION Pro 5i  노트북은 인텔의 i9-14세대 CPU와 RTX-4070 그래픽을 탑재하여 뛰어난 그래픽과 빠른 처리 속도를 자랑하며, 240Hz 주사율과 램 용량이 32기가로 넉넉하여 작업하기 수월합니다.</p>
+            <p>노트북 구성/ 운영체제(OS): 미포함(프리도스) / 용도: 게임용 , 그래픽작업용 / 화면정보 40.6cm(16인치) / 2560x1600(WQXGA) / 500nit / 주사율: 240Hz / CPU 인텔 / 코어i9-14세대 / i9-14900HX (5.8GHz) / 24코어(8P+16E) / 램 DDR5 / 램 용량: 32GB / 5600MHz / 램 교체: 가능 / 그래픽 외장그래픽 / RTX4070 / TGP: 140W / VRAM:8GB / 저장장치 M.2(NVMe) / 1TB / 저장 슬롯: 2개 / 네트워크 무선랜: 802.11ax(Wi-Fi 6E) / 유선랜: 기가비트 / 영상입출력 HDMI 2.1 / DP Alt Mode / 웹캠(FHD) / 단자 USB-C: 2개 / USB-A: 4개 / 파워 배터리: 80Wh / 전원: USB-PD / 주요제원 두께: 26.9mm / 무게: 2.5kg / 쿨링팬: 2개 / 색상: 그레이</p>              
+               <a href="https://prod.danawa.com/info/?pcode=42943403&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EA%B2%8C%EC%9D%B4%EB%B0%8D+%EB%85%B8%ED%8A%B8%EB%B6%81&cate=112758#bookmark_product_information" class="p-button"><b>노트북상세보기</b></a>  
+        </div>
+    </div>
+    <a href="https://search.danawa.com/dsearch.php?k1=%EB%A0%88%EB%85%B8%EB%B2%84+%EA%B2%8C%EC%9D%B4%EB%B0%8D+%EB%85%B8%ED%8A%B8%EB%B6%81&module=goods&act=dispMain" class="back-button"><b>레노버 다른 노트북 보기</b></a>
+    <a href="http://127.0.0.1:5500/WebSiteProject/Web.html" class="back-button"><b>메인 화면으로 돌아가기</b></a>
 </body>
 </html>

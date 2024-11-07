@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button>이름을 계속 입력하고 출력</button>
+
+    <script>
+        document.querySelector('button').addEventListener('click',function(){
+            //제어문 (반복문 -for / while)
+            while(true){
+                //무한루프 
+                const name = prompt("이름을 입력하세요");
+
+                //빠져나갈 조건 - 입력된 값이 공백이거나 null(취소버튼 누르면 반환)일 때
+                if(name == " " || name == null) break; //반복문 빠져나가기
+            }
+
+        });
+
+    </script>
+</body>
+</html>

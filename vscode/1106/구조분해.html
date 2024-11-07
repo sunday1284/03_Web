@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <script>
+    /* 
+        (ES6)구조분해 할당, destructuring-assignment
+        배열이나 객체의 속성을 해제하여 그 값을 개별 변수에 담을 수 있게 하는 js표현식
+        객체나 배열을 변수로 분해할 수 있게 해주는 특별한 문법
+        분해대상은 수정되거나 파괴되지 않음
+    */
     const anm = {
         dog : '강아지',
         'cat' : '고양이',
         'duck' : '오리'
     };
-
-
+    
     // const {dog, cat, duck} = anm;
     // console.log(cat);
     
@@ -18,4 +23,27 @@
 
     const {duck, ...rest} = anm;
     console.log(duck, rest);
+
+    const users = [
+	    {name: "철수", age: 25},
+	    {name: "영희", age: 30}
+    	];
+
+        //기존에 사용하는 방식으로 값 표현
+    	for(const user of users){  
+	        console.log(user.name, user.age);
+    	}
+        //구조분해 방식으로 값 표현
+        for(const {name, age} of users){
+	        console.log(name, age);
+	    }
+
+        // function printUser(user){
+  	    //     console.log(`${user.name}님은 ${user.age}살 이예요`);
+	    // }
+	    function printUser( {name, age} ){
+  	        console.log(`${name}님은 ${age}살 이예요`);
+	    }
+	    printUser({name : "철수" , age : 28})
+	
 </script>

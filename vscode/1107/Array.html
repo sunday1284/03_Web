@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<script>
+    const v_arr = ['둘리','고길동','도우너','또치','마이콜','고길동','철수','영희'];
+
+    //indexOf(value,startIndex) - 대상배열의 앞쪽부터 value항목을 찾아 위치 index를 반환
+    //옵션인 startIndex - 검색을 시작할 위치 index를 설정
+    // console.log(v_arr.indexOf('고길통',2)); //1 -> 5
+    //lastIndexOf(value,endIndex) - 대상배열의 뒷쪽부터 value항목을 찾아 위치 index를 반환
+    //옵션인 startIndex - 검색을 끝낼 위치 index를 설정
+    // console.log(v_arr.lastIndexOf('마이콜',3)); // 5 -> 1
+
+    //(공통) 범위에 없거나, 대상 배열에 없는 정보를 value로 지정하면 -1을 반환
+
+    //push(a,b,c,...) , pop() 배열 끝에 추가/제거 후 반환
+     //unshift(a,b,c,...) - shift() 배열 시작에 추가/제거 후 제거된 대상요소를 반환
+    v_arr.unshift('둘리엄마');
+    let rtrn = v_arr.pop(); //영희 제거
+    rtrn = v_arr.shift(); //둘리엄마 제거
+    // console.log(v_arr);
+    // console.log("제거된 요소를 반환받음 >> ", rtrn);
+
+    //뒤집어서 배열
+    // console.log(v_arr.reverse());
+
+
+    //sort() - 배열정렬, 인수가 없는 메소드는 사전순 정렬 제공
+    // console.log(v_arr.sort());
+
+    const numArr = [12,100,230,32,300,24,512];
+    // console.log(numArr); 
+    // console.log(numArr.sort()); //숫자도 사전순 정렬 -> 크기순 정렬 필요
+
+    //값을 비교하는 함수가 정의된 sort(func)사용하기
+    // console.log (numArr.sort(function(a,b){
+        // console.log(`a(${a}) - b(${b}) = ${a-b}`); //음수일 때 자리변경
+        // return a-b;// 오름차순 정렬
+
+        // console.log(`b(${b}) - a(${a}) = ${b-a}`); //음수일 때 자리변경
+        // return b-a;// 내림차순 정렬
+    // }));
+
+    //사전순 정렬 보다 (크기비교 함수를 사용한 ) 크기순 정렬 형식을 많이 씀 
+    // console.log("가영" - "나영"); //NaN
+    //문자열은 마이너스 연산을 통한 크기비교가 불가하므로
+    // 대체할 수 있는 방법을 사용함 >> 비교연산자를 사용하기
+    // 비교연산자는 내부적으로 문자열을 유니코드로 변경 시키고 변경된 수치로 마이너스 연산이 가능
+    if("가영" < "나영"){
+        // alert("나영이가 큼");
+    }
+
+    const strArr = ["가영","라영","다영","나영","하영"];
+    // console.log(strArr.sort(function(a,b){
+        // if(a>b){ //>> 오름차순 결과
+        // if(b>a){ //>> 내림차순 결과
+        //     return 1;
+        // } else {
+        //     return -1; //음수를 반환하며 자리변경함
+        // }
+    // }) );
+
+    //slice(str,end미포함) - str ~ end직전 범위를 새 배열로 반환
+    const nwArr = v_arr.slice(2,5);
+    // console.log(nwArr);
+
+    //splice(idx,n,a,b,c,...) - idx위치에서 n개 삭제하고, a,b,c,...추가
+    v_arr.splice(1,0,"꼴뚜기왕자1","꼴뚜기왕자2");
+    console.log(v_arr);
+
+
+    //concat() - 배열 합치기
+    const a = ['a',1,'p'];
+    const b = ['b',1,'a'];
+    const c = ['c',1,'r'];
+    // const aaa = v_arr.concat(nwArr,a,b,c);
+    const aaa = v_arr.concat(nwArr).concat(a).concat(b,c);
+    console.log(aaa);
+
+    //join(구분자 생략시 콤마로) - 배열로 문자열로 변환
+    console.log(aaa.join("-"));
+
+
+
+
+
+
+
+
+
+</script>
+</html>
