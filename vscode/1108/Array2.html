@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //Array.prototype.map() - 배열을 순회하여 새 배열을 반환
+
+    const fruits = ['apple','banana','cherry','durian'];
+    const juice = [];
+
+    //기존 방식
+    for(let i = 0; i<fruits.length; i++){
+        juice[i] = fruits[i] +"쥬스";
+    }
+    // console.log(juice);
+
+    //map()는 각각의 배열 원소에 대해 전달하는 함수를 호출하고 그 결과를 모아 새 배열을 만듦
+    let fJuice = fruits.map(function(a,b,c){
+        // console.log(a);  //value
+        // console.log(b);  //index
+        // console.log(c);  //array
+        return a + "juice~";
+    });
+    // console.log(fJuice);
+
+    //화살표 함수 형태로 작성해보기(자바 람다 함수랑 비슷)
+    // fruits.map((a) => {return a + "쥬스!"})
+    // fJuice = fruits.map((a) =>a+"쥬스!");
+    // console.log(fJuice);
+
+    //Array.prototype.filter() - 조건에 만족하는 요소들을 새 배열로 반환
+    let objArr = [
+        { id: 3, type: 'breads', product: '카카오순정', price: 3000 },
+        { id: 2, type: 'fruits', product: '자몽', price: 750 },
+        { id: 1, type: 'seeds', product: '쌀', price: 30000 },
+        { id: 4, type: 'cereals' , product: '오레오oz', price: 5100 },
+        { id: 4, type: 'cereals' , product: '코코볼', price: 3500 },
+        { id: 3, type: 'breads', product: '교황님의 치즈스콘', price: 4000 },
+        { id: 4, type: 'cereals' ,product: 'post그레놀라', price: 4850 },
+        { id: 1, type: 'seeds', product: '귀리', price: 14000 }
+    ];
+
+    //filter()는 각 배열 요소를 전달받은 함수의 결과가 true를 반환하는 대상만 배열로 만듦
+    //조건이 여러개일 때 논리연산자 사용
+    // console.log(objArr.filter(function(a){
+    //     // console.log(a);
+    //     return a.type == 'cereals' ||  a.price > 5000;
+    // }));
+
+    //Array.prototype.find() - 조건에 맞는 '하나의 요소만' 반환
+    /* const sweets = ['🥝','🍇','🍉','🍓','🍌'];
+    console.log (sweets.find(function(val,idx){
+        if(idx > 2){
+            return idx; //인덱스를 반환했지만 요소가 반환되었다.
+        }
+    }) ); */
+    //Array.prototype.findIndex() - 조건에 맞는 요소의 인덱스 반환
+   /*  console.log (sweets.findIndex(function(val,idx){
+        if(val == '🍇'){ //포도가 배열 1(index)에 위치하므로 1이 출력된다.
+            return val; //요소를 반환했지만 인덱스가 반환되었다.
+        }
+    }) ); */
+    
+    // indexOf()와 findIndex()의 차이는?
+    // 문자열, 정수 등의 값으로 대상을 검색하는 공통점
+    // 값의 타입이 객체인 경우, 객체의 속성을 이용해 대상을 검색할 수 있는 것은 findIndex만 가능
+    const sweets2 = [
+        {'🥝': '키위', 'seeds':'inside', price: 400},
+        {'🍇': '포도', 'seeds':'inside', price: 1000},
+        {'🍉': '수박', 'seeds':'inside', price: 500},
+        {'🍓': '딸기', 'seeds':'outside', price: 200},
+        {'🍌': '바나나', 'seeds':'inside', price: 700} 
+    ];
+
+    // console.log(sweets2.findIndex(function(val){
+    //     return val.price == 200;
+    // }));
+
+    //Array.prototype.some() - 조건을 만족하는 요소가 하나라도 있을 때 true 반환
+    // console.log(
+    //     sweets2.some(function(val){
+    //         return val.seeds == 'upside';
+    //     }) 
+    // );
+
+    //Array.prototype.every() - 모든 조건을 만족할 때 true 반환
+    // console.log(
+    //     sweets2.every(function(val){
+    //         return val.seeds == 'inside';
+    //     }) 
+    // );
+
+    // Array.prototype.reduce() - 모든 요소를 하나의 값으로 만들어 반환
+    // reduce(func(accumulator, currentValue, currentIndex, array))
+    console.log("최종 누적된 값을 갖게 된 누산기의 price결과 >> ",
+            sweets2.reduce(function(accumulator, currentValue, currentIndex, array){
+            //accumulator(누산기 - 연속되는 연산에 대한 결과를 누적하는 역할)
+            console.log(accumulator, currentValue, currentIndex, array);
+            accumulator.price = accumulator.price + currentValue.price;
+            return accumulator;
+        }).price
+    );
+    
+</script>
+   
+</body>
+</html>

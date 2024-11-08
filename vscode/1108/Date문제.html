@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<body>
+
+    <button>100일 후 날짜는?</button><br>
+    <input type="button" value="살아온 년수"><br>
+    <input type="button"  id="sue" value="수료일까지 남은 일자"><br>
+
+</body>
+<script>
+    //1.오늘날짜 ~기준일 까지의 경과시간 얻기 - 전역에서 사용.
+    const tdyMs = new Date().getTime();    //ms
+    //수료일까지 남은 일자 
+    document.getElementById('sue').addEventListener('click', function () {
+        const suroMs = new Date("2025.04.22").getTime();
+
+        // 2 - 1 뺀 결과 환산 후 출력하기
+        const ms = suroMs - tdyMs;
+        const day = ms / (1000 * 60 * 60 * 24);
+        console.log(Math.ceil(day).toLocaleString()+ "일 남음...");
+    });
+    document.querySelector('input').addEventListener('click', function () {
+
+        //1.기준일 ~ 오늘까지의 ms구하기
+        //2.기준일 ~ 생일까지의 ms구하기
+        const birthMs = new Date("2001.02.15").getTime();
+
+        // 1 - 2 뺀 결과 환산 후 출력하기
+        const ms = tdyMs - birthMs;
+        const day = ms / 1000 / 60 / 60 / 24;
+        console.log(day.toFixed() + "일 지남...");
+        console.log((day / 365).toFixed() + "년 지남...");
+
+
+    });
+
+    document.querySelector('button').addEventListener('click', function () {
+
+
+        //2.100일 정보를 ms로 만들기
+        const day100 = 1000 * 60 * 60 * 24 * 100;   //ms
+
+        const after100 = new Date(tdyMs + day100);
+        console.log(after100.toLocaleString());
+    });
+    //getDay() - 요일 구하기(0~6 / 일~토)
+
+    const day = new Date().getDay();
+
+    //배열 사용하기
+    const dd = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    // document.getElementsByTagName('body')[0].innerHTML += "신나는 "+ dd[day] + "day <br>";
+    //현재 innerHTML이 발생시킨 이슈로 button요소가 제대로 표현되지 않는 문제를 
+    //속성을 대체할 메서드(insertAdjacentHTML(위치,요소))의 사용으로 해결 예정...
+    document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend', "신나는 " + dd[day] + "day <br>");
+    // "신나는 "+ dd[day] + "day <br>";
+
+
+    //조건문 사용하기
+    let days;
+    switch (day) {
+        case 0:
+            days = "일요일";
+            break;
+        case 1:
+            days = "월요일";
+            break;
+        case 2:
+            days = "화요일";
+            break;
+        case 3:
+            days = "수요일";
+            break;
+        case 4:
+            days = "목요일";
+            break;
+        case 5:
+            days = "금요일";
+            break;
+        case 6:
+            days = "토요일";
+            break;
+    }
+
+    // document.querySelector('body').innerText += "오늘은 즐거운 " + days;
+    document.querySelector('body').insertAdjacentHTML('beforeend', "오늘은 즐거운 " + days);
+
+
+</script>

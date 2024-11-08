@@ -6,18 +6,60 @@
 </head>
 <body>
     <button>이름을 계속 입력하고 출력</button>
+    <button>중복되지 않는 5개 정수 출력</button>
 
     <script>
+        document.querySelectorAll('button')[1].addEventListener('click',function(){
+
+            const v_arr = [];
+            for(;;){
+                //무한루프
+                const v_su = prompt("수를 입력하세요");
+
+                //문자열 제외하기 -isNaN(): 인수를 number타입으로 변환후 NaN여부를 boolean으로 반환
+                if(isNaN(v_su)) continue; //해당 입력값은 스킵(아래코드 실행안하고 다음 입력값으로 넘어감)
+
+                //중복되지 않는 수만 추가해야함(indexOf가 없는 데이터는 -1을 반환하는 특성 활용) 
+                // console.log(v_arr.indexOf(v_su));
+                if(v_arr.indexOf(v_su) == -1){
+                    v_arr.push(v_su); 
+                }else {
+                    alert("중복입니다.");
+                }
+
+                //빠져나갈 조건 >> 미중복 수 5개를 만족할 때 
+                if(v_arr.length == 5) break;
+
+            }
+            console.log(v_arr);
+        });
+
+
+        // querySelector() 여러 요소를 대상으로 검색시 가장 첫번째 항목만 반환하는 특성을 가짐
         document.querySelector('button').addEventListener('click',function(){
-            //제어문 (반복문 -for / while)
-            while(true){
+           
+            const v_arr = []; //이름을 입력할 배열 공간
+
+            //js는 동적타입언어로서 다른타입의 정보를 boolean으로 자동형변환 처리해 사용가능  
+            //문자열, 0이 아닌 숫자 등 >> true를 대체
+            // 빈문자열(""), 0, null, undefined 등 >> false를 대체
+            while(" "){
                 //무한루프 
+
                 const name = prompt("이름을 입력하세요");
 
                 //빠져나갈 조건 - 입력된 값이 공백이거나 null(취소버튼 누르면 반환)일 때
-                if(name == " " || name == null) break; //반복문 빠져나가기
-            }
+                //  if(name == " " || name == null) break; //빠져나가기
+                if(name == " " || name == null) return; //함수 종료
 
+                // 공백정보는 추가되지 않도록 - trim() 사용
+                // console.log("트림 전",name.length);
+                // console.log("트림 후",name.trim().length);
+                if(name.trim().length != 0){
+                    v_arr.push(name); //배열 뒤에 추가  
+                }       
+            }
+            console.log(v_arr);
         });
 
     </script>
