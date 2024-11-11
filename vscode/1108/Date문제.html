@@ -4,23 +4,56 @@
 
     <button>100일 후 날짜는?</button><br>
     <input type="button" value="살아온 년수"><br>
-    <input type="button"  id="sue" value="수료일까지 남은 일자"><br>
+    <input type="button" value="수료일까지 남은 일자"><br><br>
+   
+    <input type="date" id="calendar"><br>
+    <input type="button" value="환불가능조회"><br>
 
 </body>
 <script>
     //1.오늘날짜 ~기준일 까지의 경과시간 얻기 - 전역에서 사용.
     const tdyMs = new Date().getTime();    //ms
-    //수료일까지 남은 일자 
-    document.getElementById('sue').addEventListener('click', function () {
-        const suroMs = new Date("2025.04.22").getTime();
+    const inputs =document.querySelectorAll('input');
 
-        // 2 - 1 뺀 결과 환산 후 출력하기
-        const ms = suroMs - tdyMs;
-        const day = ms / (1000 * 60 * 60 * 24);
-        console.log(Math.ceil(day).toLocaleString()+ "일 남음...");
+    //환불가능일자
+    inputs[3].addEventListener('click',function(){
+
+        const refund =  document.querySelector('#calendar').value; //선택된날짜정보 얻기
+        console.log(refund);
+        const rfMs = new Date(refund);
+
+        const rf = (tdyMs - rfMs)/1000/60/60/24;
+        console.log(">>>", rf + "일 경과");
+
+        
+        if(rf > 7){
+            alert("교환 불가");
+        }else if(rf < 0) {
+            // alert("[" + new Date().toLocaleDateString() +"] 이전의 날짜를 선택하시오");
+            alert(`[ ${new Date().toLocaleDateString()} ] 이전의 날짜를 선택하시오`);
+        }
+        else {
+            alert("교환 가능");
+        }
     });
-    document.querySelector('input').addEventListener('click', function () {
+    
 
+
+    //수료일(D-day)
+   inputs[1].addEventListener('click',function(){
+
+        const suryo = new Date('2025.4.21').getTime(); //ms
+        const ms = suryo - tdyMs;
+
+        const day = ms / 1000 / 60 / 60 / 24;
+
+        //콘솔로 표현하거나 
+        //body공간에 출력
+        document.querySelector('body')
+        .insertAdjacentHTML('beforeend', "<hr> 남은 수료일은 >> " +day.toFixed(1)+"일");
+    });
+    //살아온 일자(D+day)
+    document.querySelector('input').addEventListener('click', function () {
         //1.기준일 ~ 오늘까지의 ms구하기
         //2.기준일 ~ 생일까지의 ms구하기
         const birthMs = new Date("2001.02.15").getTime();
@@ -30,10 +63,8 @@
         const day = ms / 1000 / 60 / 60 / 24;
         console.log(day.toFixed() + "일 지남...");
         console.log((day / 365).toFixed() + "년 지남...");
-
-
     });
-
+    //오늘로부터 100일
     document.querySelector('button').addEventListener('click', function () {
 
 

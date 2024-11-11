@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: solid;
+        padding: 20px;
+    }
+    </style>
+</head>
+<body>
+    <a href="javascript:mun1()">주민등록번호를 입력받아 생년월일과 성별, 나이 출력</a>
+    <br>
+    <a href="javascript:mun2()">주민등록번호 유효성 검사</a>
+    <div></div>
+<script>
+    const mun1 = function(){
+
+       const jumin =  prompt("주민번호를 입력하슈", "110326-4432618");
+
+       //주민등록번호에서 부분 문자열 추출하기
+       //년도 01, 월 23, 일 45, 성별 및 연도 구분 7 - index
+       const jmY = jumin.substring(0,2); 
+       const jmM = jumin.slice(2,4);
+       const jmD = jumin.substr(4,2);
+       const jmG = jumin.charAt(7); //substring(7,8), slice(7,8), substr(7,1) 
+       // console.log(jmY, jmM, jmD); //쉼표, +연산자 모두 사용가능(이때, 더하기연산자를 통한 결과 표현만 주의할 것)
+       alert(jmY + jmM + jmD + " - " +jmG); //인수를 하나만 처리하므로 여러개를 표현할 때 +연산자를 이용해서 연결해줘야함 
+       
+       //출생년도 1-2: 1900년대, 3~4: 2000년대, 5~6: 1900년대 외국인, 2000년대 외국인
+       let yy = ""; //출생년도 앞자리 2개를 담을 변수
+    //    if(jmG == "1" || jmG == "2" || jmG == "5" || jmG == "6") yy = "19";
+    //    if(jmG == "3" || jmG == "4" || jmG == "7" || jmG == "8") yy = "20";
+    //    switch(jmG){
+    //         case "1": case "2": case "5": case "6":
+        switch(true){
+            //Array.prototype.includes() - 배열안에 정보 일치 여부에 따라 boolean 반환
+            case ["1","2","5","6"].includes(jmG):
+                yy = "19";
+                break;
+            default:
+                yy = "20";
+       }
+    //    console.log( yy + jmY );
+       
+       // 생일
+       const brith = yy.concat(jmY) + "년 " + jmM + "월 " + jmD + "일";
+        //const brith1 = `${yy.concat(jmY)}년 ${jmM}월 ${jmD}일`;
+        //console.log(brith, brith1);
+       //나이
+       //4자리 연도 - 출생년도
+       const age = new Date().getFullYear() -  yy.concat(jmY); 
+       console.log(age);
+
+       //성별 - 홀수남자 짝수여자
+       let gd = "";
+       if( jmG%2 != 0 ) gd = "남자";
+       else gd = "여자";
+
+       //최종 결과 출력
+       let result = "주민등록번호 : " + jumin + "<br>";
+       result += "생일: " + brith + "<br>";
+       result += `나이: ${age} <br>`;
+       result += `성별: ${gd}`;
+
+
+    //    document.querySelector('div').innerHTML = result;
+       //innerHTML 속성보다 insertAdjacentHTML() 메소드 사용을 권장하고 있다.
+       document.querySelector('div').insertAdjacentHTML("beforeend",result);
+    };
+
+    const mun2 = function(){
+        
+        let jumin = prompt("주민번호입력", '110326-3436618');
+
+        //입력값에 대시 여부 확인
+        // console.log(jumin.indexOf("-") ); //(search)있으면 index반환, 없으면 -1반환
+        // console.log(jumin.includes("-")); //있으면 true반환, 없으면 false반환
+        // console.log(jumin.match(/-/)); //
+
+        if(jumin.includes("-")){
+            //대시 있으면 제거
+            //1. replace()
+            jumin = jumin.replace("-","");
+
+            //2. split + concat
+            // jumin.split("-")[0].concat(jumin.split("-")[1]);
+            // const jm12 = jumin.split("-");
+            // jumin = jm12[0].concat(jm12[1]);
+        }
+        // console.log("제거>> ", jumin);
+
+        // 13자리 정보 중 마지막 자리는 제외하고 총 합 구하기
+        // ABCDEF-GHIJKL M
+        // 110326-443261 8
+
+        // 각 자리에 2~9까지 반복되는 정보를 곱한 총 합 구하기
+        // 1. 배열 사용해서 순차적인 값 사용하기
+        const numArr = [2,3,4,5,6,7,8,9,2,3,4,5]; // 12개의 순차적인 정보
+        
+        
+        let sum = 0;
+        for(let i=0; i<jumin.length-1; i++){
+            //jumin의 각 i위치에 numArr의 i번째 값을 곱
+            // sum += jumin.charAt(i) * numArr[i];
+
+            // 2. 공식 사용해서 순차적인 값 얻기
+            sum += jumin.charAt(i) * (i%8+2);
+
+
+        }
+        // console.log("총 합 >>>>>> " + sum);
+
+        //총 합을 11로 나눈 나머지를 11에서 빼기
+        let rst = 11 - sum%11;
+        console.log(rst); 
+        rst = rst%10; //10미만이면 그대로 사용, 10이상일 떄 치환하기
+
+        //주민번호의 마지막 자리의 일치 여부를 통해 유효성을 판단하기
+        // console.log(jumin.length); //13자리[0~12]
+        const last = jumin[jumin.length-1];  //마지막 자리 정보
+
+        let valid = "";
+        if(rst == last) valid = "유효합니다";
+        else valid = "유효하지 않습니다";
+
+        const v_div = document.querySelector('div');
+        // v_div.innerText = ""; //영역초기화
+        v_div.insertAdjacentHTML('beforeend',  
+                "입력된 주민등록번호: " + jumin.slice(0,6) +  "-******* 는 " + valid);
+
+        //beforebegin   대상영역의 외부 앞쪽에 추가
+        //afterbegin    대상영역의 내부 앞쪽에 추가
+        //beforeend     대상영역의 내부 뒷쪽에 내용 추가
+        
+        //afterend      대상영역의 외부 뒷쪽에 추가
+        
+    };
+
+    
+</script>
+</body>
+</html>

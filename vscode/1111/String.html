@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body::after {
+            content:"\C6D0";
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    [&#50896;]
+<script>
+    /* 문자열string
+      기본 타입은 객체가 아니며 속성과 메소드가 존재하지 않는 데이터
+      문자열 변수 선언시,
+        javascript 엔진은 내부적으로 new String()을 호출하여 임시적으로 기본타입을 래퍼객체로 변환
+    
+      자바스크립트에는 null, undefined을 제외한 5가지 기본타입을 래핑하는 래퍼객체가 있다
+      >> 기본 타입은 속성과 메소드를 정의할 수 없고, 래퍼 객체가 제공하는 속성과 메소드만을 이용해 값을 처리할 수 있다
+    
+      원시 값 처리 과정 >> 임시/암묵적으로 래퍼객체로 변환되어 처리 후 메모리에서 삭제되는 형태
+  */
+
+    let v_str = "String객체는 원시 타입인 문자열을 다룰 때 유용한 프로퍼티와 메소드를 제공하는 WRapper객체";
+    
+    //index 위치의 문자를 구함
+    // console.log(v_str.charAt(10)); //원 50896
+    
+    // //index 위치의 문자를 유니코드로 변환
+    // console.log(v_str.charCodeAt(10)); //'원'의 유니코드 >>
+
+    // //indexOf(value,serachStr)/lastIndexOf(value, serachEnd) 문자위치의 index반환
+    // console.log(v_str.lastIndexOf("원",11));   //10, -1
+
+    // //concat() 문자열 연결 (더하기 연산자 사용과 동일한 결과)
+    // const a = "동";
+    // const b = "물";
+    // const c = "원";
+    // console.log(a.concat(b,c));
+    // console.log(a.concat(b).concat(c));
+
+    // //trim() 데이터 바깥쪽 공백만 제거(데이터 안쪽 공백은 유지함)
+    // let jjangu = " 짱    구 ";
+    // console.log(jjangu.length);   // 8
+
+    // // console.log(jjangu.trim()); //처리결과를 다시 대입하거나 새로운 변수에 담아서 사용해야 함 
+    // jjangu = jjangu.trim();
+    // console.log(jjangu.length); //6
+
+    //replace(검색문자,대체문자) 첫번째 검색 대상만 적용된다.
+    // console.log( v_str.replace('객체','Object')); //처리 결과를 확인만 가능
+    // const v_str1 = v_str.replace('객체','Object');
+    // console.log( v_str, '\r\n' ,v_str1); //처리 결과를 반영하기 위해 재할당 또는 새 변수에 담기 필요
+    
+    //정규식을 사용해서 replaceAll의 효과를 낼수 있다.
+    // console.log(v_str.replace(/객체/g,'o-b-j-e-c-t')); //v_str의 global에서 /패턴으로 지정된/ 항목을 모두 찾아 치환
+
+   // \r\n >> 줄넘김 기호  \r(carrage return) \n(line feed)
+
+   //replaceAll(검색문자, 대체문자) 모든 검색문자를 치환한다.
+    // console.log(v_str.replaceAll('객체','ㄱㅐㅊㅔ'));
+
+    //search() 부분 문자열 또는 정규식으로 검색하여 위치index를 반환받음
+    //indexOf()와 같은 결과 제공 (정규식도 사용 가능한 점이 차이점)
+    // console.log(v_str.search('원')); //문자로 검색 10
+    // console.log(v_str.search(/원/)); //정규식으로 검색 10
+    // console.log(v_str.indexOf(/원/)); //정규식을 지원하지 않으므로 -1 반환
+
+    //match() 정규식으로 검색된 결과를 배열로 반환, 없으면 null반환
+    // console.log(v_str.match(/객체/)); //첫번째 패턴정보만 배열 반환
+    // console.log(v_str.match(/객체/g)); //모든 패턴정보만 배열 반환
+    // console.log(v_str.match(/갱체/g)); //null
+    
+
+    //substring(str,end직전까지), slice(str,end직전까지), substr(str,length) 부분 문자
+    //(공통사항) 2번째 인자값 생략시 문자열의 끝까지 반환
+    console.log(v_str.substring(10,15)); //원시 타입
+    console.log(v_str.slice(10,15)); //원시 타입
+    console.log(v_str.substr(10,5)); //원시 타입
+
+    //(공통사항) end값이 없으면 끝까지 반환
+    console.log(v_str.substr(10)); 
+
+    //(slice, substr공통) 음수값 사용시 끝범위부터 갯수만큼 값을 반환
+    console.log(v_str.substr(-3));
+    console.log(v_str.slice(-4));
+    console.log(v_str.substring(-5)); //해당없음으로 전체 문자열 반환
+
+    //split(구분기호, 반환갯수) 구분기호로 정보를 나눠 배열로 반환
+    // console.log (v_str.split(" ")[6]);
+    console.log (v_str.split(" ",4));
+
+</script>
+</body>
+</html>
