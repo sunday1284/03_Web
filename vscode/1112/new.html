@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h4>열린 창</h4>
+    <textarea rows="10" cols="30">자식창이예요</textarea> <br>
+    <input type="button" value="보내기">
+
+<script>
+
+    //자식창의 멀티라인 내용을 부모창으로 전달해보기
+    document.querySelector('input').addEventListener('click',f_txt());
+    //접근 가능하도록 외부로 꺼내고 이름 붙여줌
+    function f_txt(){ 
+        //1.자식창의 textarea에 작성된 내용 얻기
+        // - 자식창 요소에 접근
+        const txtVal = document.querySelector('textarea').value;
+        console.log(txtVal);
+    
+        //2.부모창의 textarea에 1번 내용 삽입하기
+        // - 부모창 요소에 접근(opener속성 활용)
+        opener.document.querySelector('textarea').value = txtVal;
+    }
+    //엔터 키를 눌렀을 때 보내기버튼의 기능 실행하기 
+    //keydown - 키보드가 눌리는 순간의 이벤트
+    document.querySelector('textarea').addEventListener('keydown',function(e){
+        console.log("이벤트 객체>>", e);
+        //눌려진 키보드의 정보를 대표적으로 key(Enter), keyCode(13)속성으로 확인
+        if(e.keyCode == 13){
+            f_txt();
+        }
+    });
+
+</script>
+</body>
+</html>

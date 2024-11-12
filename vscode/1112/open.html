@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+ <!-- 
+    팝업
+     - 기존 페이지 전환 방식이 아닌, 새창을 추가해 새로운 정보를 갱신받는 목적의 페이지 표시 방식 
+        
+    - 트래픽과 메모리 증가 및 팝업블로킹 등의 악성공격으로부터 사용자 보호를 위해
+    대부분의 브라우저들이 기본적으로 팝업을 차단하고 있음 
+    
+    또한 현재는 ajax통신과 apa형태의 발전으로 많이 사용되지 않음(모델로 많이 대체되었음)
+
+    경우에 따라 브라우저 별 팝업 차단에 대한 통제가 다르며, 유저에 의해 발생되는 팝업은 허용한다.      
+-->
+<button>팝업띄우기</button>
+
+
+<hr>
+<h4>열어준 창</h4>
+<textarea rows="10" cols="30">부모창이예요</textarea> <br>
+<input type="button" value="보내기">
+
+<!-- 숙제 >>> 부모창의 textarea정보를 자식창으로 출력해보기 + 키보드이벤트로 같은 함수 호출하기 -->
+
+<script>
+
+    // window.open('//naver.com'); //팝업 차단 
+
+    document.querySelector('button').addEventListener('click',function(){
+        //1번째 인수로 url 지정
+        //2번째 인수로 타겟을 지정하거나, 윈도우의 이름으로 설정 후 타겟대상이 될 수 있음
+        // window.open('//naver.com', '_blank'); //새로운 탭(또는 새 창)을 열어서 콘텐츠 표시
+        // window.open('//naver.com','here'); //here이름의 탭(창)에 콘텐츠로 표시 
+        //3번째 인수로 specs..설정 - 새창에 대한 옵션 값 설정  
+        window.open('./new.html','blank','width=400 height=500 top=100 left=300'); 
+
+    });
+
+</script>
+
+</body>
+</html>

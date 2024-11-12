@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h4>1부터 100사이 숫자 입력</h4>
+    <input size="3">
+    <input type="button" value="추측">
+    <div></div>
+    <script>
+
+        //1~100 범위의 랜덤수 하나 생성 
+        // Math.floor(Math.random()*100 + 1);
+        const RND = Math.ceil(Math.random()*100);
+
+        const v_div = document.querySelector('div'); //결과 및 힌트를 출력할 영역
+
+        let v_arr = []; //입력한 값을 저장할 배열
+        let v_cnt = 0; //입력 횟수를 저장할 변수
+
+
+        document.querySelector('[type=button]').addEventListener('click',function(){
+
+            const numVal = document.querySelector('input').value;
+
+            //null check
+            if(numVal.trim().length == 0) return;   //함수 종료 
+
+            v_arr.push(numVal);
+
+            //랜덤수와 입력값 비교
+            if(RND == numVal){
+                v_cnt++;
+                //입력한 값과 입력횟수를 div영역에 출력
+                v_div.innerText = "입력한 값: " + v_arr;
+                // v_div.innerHTML += "<br> 입력된 횟수: " + v_cnt;
+                v_div.insertAdjacentHTML('beforeend', "<br> 입력된 횟수: " + v_cnt);
+            }else if(RND > numVal){
+                v_cnt++;
+                v_div.innerText = "힌트 : 더 큰 수를 입력하세요(" + v_cnt + ")";
+            } else {
+                v_cnt++;
+                v_div.innerText = `힌트 : 더 작은 수를 입력하세요(${v_cnt})`;
+            }
+        });
+    </script>
+
+    <hr>
+    <div>
+        <input type="button" value="로또 생성">
+    </div>
+
+    <script src="../js/random.js"></script>
+    <script>
+        // document.querySelectorAll('input')[2]
+        document.querySelector('div input').addEventListener('click',function(){
+            const lotto = [];
+            //로또 1~45까지의 수 6개의 조합 
+            for(let i=0; i<6; i++){
+
+                const RND = random(1,45);
+                //중복 검증 >> indexOf - 없는 값은 -1반환, includes - 배열값의 일치여부 boolean
+                // if(lotto.indexOf(RND) == -1){ //중복아님
+                if(!lotto.includes(RND)){ //배열에 정보가 없을 때 false반환 >> not연산자 붙여서 결과 뒤집음
+                    lotto.push(RND);
+                    console.log(" if>> ", lotto.indexOf(RND) + ", " + RND);
+                }else{//중복임
+                    //진행된 index정보 복구시키기
+                    i -= 1;
+                    console.log(" else>> ", lotto.indexOf(RND) + ", " + RND);
+                }
+            }
+            console.log(" >>>> ", lotto);
+
+        });
+
+    </script>
+
+</body>
+</html>

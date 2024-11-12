@@ -7,6 +7,8 @@
     div {
         border: solid;
         padding: 20px;
+        display: inline-block;
+        width: 20%;
     }
     </style>
 </head>
@@ -14,7 +16,10 @@
     <a href="javascript:mun1()">주민등록번호를 입력받아 생년월일과 성별, 나이 출력</a>
     <br>
     <a href="javascript:mun2()">주민등록번호 유효성 검사</a>
-    <div></div>
+
+    <br><br>
+    
+    <div> | </div>
 <script>
     const mun1 = function(){
 
@@ -128,15 +133,13 @@
 
         const v_div = document.querySelector('div');
         // v_div.innerText = ""; //영역초기화
-        v_div.insertAdjacentHTML('beforeend',  
+        v_div.insertAdjacentHTML('beforebegin',  
                 "입력된 주민등록번호: " + jumin.slice(0,6) +  "-******* 는 " + valid);
 
         //beforebegin   대상영역의 외부 앞쪽에 추가
         //afterbegin    대상영역의 내부 앞쪽에 추가
         //beforeend     대상영역의 내부 뒷쪽에 내용 추가
-        
-        //afterend      대상영역의 외부 뒷쪽에 추가
-        
+        //afterend      대상영역의 외부 뒷쪽에 추가   
     };
 
     
