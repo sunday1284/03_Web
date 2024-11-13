@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 2px solid saddlebrown;
+        height: 100px;
+    }
+    </style>
+</head>
+<body>
+    <div>랜덤색을 표현할 영역</div>
+    <button>랜덤색만들기</button>
+    <button>중지</button>
+
+    <script src="../js/random.js"></script>
+<script>
+
+    //proxy - 대리자 (기능을 대리 수행)
+
+    //랜덤색 생성 함수를 대신 실행할 대리함수 정의
+
+    let flag = false; //상태변수 -기본값false
+    function f_proxy(){
+        //랜덤색표현 함수를 대리 실행
+        if(!flag){
+            fnc(); //실행 후
+            flag = true; //상태변수 값 변경
+        }
+    }
+
+    const v_btns =  document.getElementsByTagName('button');
+
+    v_btns[1].addEventListener('click',function(){
+        clearInterval(timer);
+        flag = false;
+    });
+
+    v_btns[0].addEventListener('click' ,f_proxy);
+    const fnc = function(p_arg1, p2){ 
+        let arr10 = [];
+        for(let i=0; i<3; i++){
+            arr10[i] = random(0,255);
+        }
+        const v_div = document.querySelector('div');
+        v_div.style.backgroundColor = "rgb(" +arr10 + ")";
+        v_div.innerHTML = "rgb(" +arr10 + ") <br>";
+
+        if(p_arg1){
+
+            v_div.innerText += p_arg1.aa;
+            console.log(p_arg1.aa);
+        }
+        // console.log(p_arg1.aa);
+        //window.setTimeout(fn,delay,param1, param2, ...)
+        //배열, 객체 형태의 인수는 하나의 매개변수로 전달된다.
+        // timer = setTimeout(fnc,1000,['apple','banana']);
+        timer = setTimeout(fnc,1000,{'aa':'apple','bb':'banana'});
+    };
+
+
+
+</script>
+</body>
+</html>

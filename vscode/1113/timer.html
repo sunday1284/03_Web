@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 2px solid saddlebrown;
+        height: 100px;
+    }
+    </style>
+</head>
+<body>
+    <div>랜덤색을 표현할 영역</div>
+    <button>랜덤색만들기</button>
+    <button>중지</button>
+
+    <script src="../js/random.js"></script>
+<script>
+    let fnc;
+    const v_btns =  document.getElementsByTagName('button');
+
+    //타이머 함수 중지
+    v_btns[1].addEventListener('click',function(){
+        clearInterval(timer);
+        //비활성화 상태의 버튼을 다시 활성화 상태로 변경하기
+        v_btns[0].disabled = false;
+    });
+
+    //랜덤색 생성
+    v_btns[0].addEventListener('click',fnc = function(){
+
+        //  10진수로 랜덤색 만들기
+        //  rgb(r,g,b)의 각 항목에 0~255범위의 난수 할당하기
+        let arr10 = [];
+        
+        //16진수로 랜덤색 만들기
+        // #rrggbb - 각 두자리씩 16진수 난수 할당하기
+        let arr16 = [];
+
+
+        for(let i=0; i<3; i++){
+            arr10[i] = random(0,255);
+            arr16[i] = random(0,255).toString(16);
+            
+        }
+        console.log(arr10, " | ", arr16);
+
+
+
+        //div요소에 스타일로 색상 반영하기
+        const v_div = document.querySelector('div');
+
+
+        v_div.style.backgroundColor = "rgb(" +arr10 + ")";
+        v_div.style.color = "#" + arr16.join("");
+        v_div.innerHTML = "rgb(" +arr10 + ") <br>";
+        //Array.join() - 배열을 문자열로 변환(구분자 생략시 콤마가 추가되므로 구분자 미지정을 위해 "")
+        v_div.innerText += "#" + arr16.join(""); 
+
+        //버튼이 1회 이상 눌리지 않도록 비활성화 처리
+        // document.querySelector('button').disabled = true;
+        // v_btns[0].disabled = true;
+        this.disabled = true;
+
+        //재귀호출을 통해 setTimeout도 setInterval과 같은 반복호출 효과를 표현가능
+        timer = setTimeout(fnc,1000);
+        
+    });
+    //window의 모든 속성과 메소드는 window를 생략하고 사용가능하다.
+    //대표적으로 사용중인 window.alert, window.confirm, window.prompt...
+
+    //지정된 deley이후 1회만 함수를 호출함
+    // window.setTimeout(fn,delay);
+    // setTimeout(fnc,3000);
+
+    //지정된 delay마다 함수를 반복 호출함 
+    //window.setInterval(fn,delay);
+    // const timer = setInterval(fnc,1500);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 2px solid blue;
+    }
+    </style>
+</head>
+<body>
+    <div id="id_div">
+        <span>디브안에 스팬1</span>
+        <span>디브안에 스팬2</span>
+        <span>디브안에 스팬3</span>
+    </div>
+<pre>
+[Node관계]
+    - parentNode - 부모노드 반환
+    - childNodes - 자식노드를 배열로 반환
+    - firstChild - 첫번째 자식 노드 반환
+    - lastChild  - 마지막 자식 노드 반환
+    - nextSibling - 다음 형제 노드 반환
+    - previousSibling - 이전 형제 노드 반환
+</pre>
+<script>
+    const fstChild = document.querySelector('span');
+    // console.log( fstChild.parentNode);
+    const parent = fstChild.parentNode;
+    console.log(parent.childNodes); //7, DOM을 구성하는 모든 항목의 노드가 자식노드에 포함된다.
+    console.log(parent.firstChild); //text node - 줄넘김 기호를 포함한 공백이 첫자식노드
+    console.log(parent.childNodes[1]); //첫번째 span 요소노드 반환
+    console.log(parent.lastChild); //text node - 줄넘김 기호를 포함한 공백이 첫자식노드
+
+    console.log( parent.firstChild.nextSibling ); //첫번째 span 노드에 반환
+
+</script>
+</body>
+</html>
