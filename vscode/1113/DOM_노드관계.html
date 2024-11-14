@@ -17,23 +17,46 @@
     </div>
 <pre>
 [Node관계]
-    - parentNode - 부모노드 반환
-    - childNodes - 자식노드를 배열로 반환
-    - firstChild - 첫번째 자식 노드 반환
-    - lastChild  - 마지막 자식 노드 반환
-    - nextSibling - 다음 형제 노드 반환
-    - previousSibling - 이전 형제 노드 반환
+    *괄호 안의 속성은 요소 노드만을 대상으로 반환한다.
+    - parentNode(parentElement)             - 부모노드 반환
+    - childNodes(children)                  - 자식노드를 배열로 반환
+    - firstChild(firstElementChild)         - 첫번째 자식 노드 반환
+    - lastChild(lastElementChild)           - 마지막 자식 노드 반환
+    - nextSibling(nextElementSibling)        - 다음 형제 노드 반환
+    - previousSibling(previousElementSibling) - 이전 형제 노드 반환
+[Node정보]
+    -nodeName(tagName) - 노드 이름 반환
+    -nodeValue - 노드의 값 반환
+    -textContent - 텍스트 반환
 </pre>
 <script>
     const fstChild = document.querySelector('span');
     // console.log( fstChild.parentNode);
     const parent = fstChild.parentNode;
-    console.log(parent.childNodes); //7, DOM을 구성하는 모든 항목의 노드가 자식노드에 포함된다.
-    console.log(parent.firstChild); //text node - 줄넘김 기호를 포함한 공백이 첫자식노드
-    console.log(parent.childNodes[1]); //첫번째 span 요소노드 반환
-    console.log(parent.lastChild); //text node - 줄넘김 기호를 포함한 공백이 첫자식노드
+     //7, DOM을 구성하는 모든 항목의 노드가 자식노드에 포함된다.
+    console.log(parent.childNodes);    
 
-    console.log( parent.firstChild.nextSibling ); //첫번째 span 노드에 반환
+    //text node - 줄넘김 기호를 포함한 공백이 첫자식노드
+    console.log(parent.firstChild.nodeName);     //text
+    console.log(parent.firstChild.tagName);     //요소노드가 아니므로 undefined
+    
+    //첫번째 span 요소노드 반환
+    console.log(parent.childNodes[1].nodeName); //SPAN
+    console.log(parent.childNodes[1].tagName); //SPAN
+
+
+    
+    //text node - 줄넘김 기호를 포함한 공백이 첫자식노드
+    console.log(parent.lastChild.nodeValue);  //textNode(줄넘김기호+공백) 값 제공
+
+    //첫번째 span 노드에 반환
+    console.log( parent.firstChild.nextSibling);
+    console.log( parent.firstChild.nextSibling.nodeValue ); //요소노드까지만 접근했으므로 null을 반환
+    console.log( parent.firstChild.nextSibling.textContent ); //요소노드까지만 접근해도 텍스트정보 반환
+    console.log( parent.firstChild.nextSibling.firstChild.nodeValue );  //textNode까지 진입후 nodeValue결과 확인가능
+    console.log( parent.firstChild.nextSibling.firstChild.data ); //상동
+
+
 
 </script>
 </body>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+      border: 3px dashed gold;
+      padding: 10px;
+      height: 400px;
+      overflow: auto;
+    }
+    </style>
+</head>
+<body>
+    <button>추가</button>
+    <button>삭제</button>
+    <button>추가/삭제</button>
+    <div></div>
+
+<script>
+    const v_div = document.querySelector('div');
+    const v_btns = document.querySelectorAll('button');
+
+    const ment = ['행복','좋은','희망','꿈','특별해','Happy'];
+    
+    //추가와삭제
+    v_btns[2].addEventListener('click',function(){
+        
+        const ran = parseInt(Math.random()*ment.length);
+        let pTag = document.createElement('p'); //<p>
+        let txtNd = document.createTextNode(ment[ran]);    
+        
+        //삭제요소노드 생성하기
+        let v_input = document.createElement('input'); //<input>
+        //속성 type=button value=버튼이름
+        v_input.type = "button";
+        v_input['value'] = "삭제";
+        // v_input.onclick = delBtn(this); //js에서는 해당 방식으로 이벤트속성이 설정되지 않음
+        v_input.setAttribute('onclick','delBtn(this)');
+        // console.log( v_input);
+
+        pTag.append(txtNd, v_input); //append는 여러개를 추가 가능
+        v_div.append(pTag);
+    });
+
+    //div내부 삭제버튼 이벤트
+    function delBtn(p_this){
+        // console.log(p_this.previousSibling); //.형제요소를 통해 삭제버튼위치를 파악
+        p_this.parentNode.remove();
+    }
+
+
+    //삭제
+    v_btns[1].addEventListener('click',function(){
+        // 부모영역.removeChild(삭제노드)
+        v_div.removeChild(v_div.lastElementChild);
+    });
+    
+    //추가
+    document.querySelector('button').addEventListener('click',function(){
+
+        // const ment = ['행복','좋은','희망','꿈','특별해','Happy'];
+        const ran = parseInt(Math.random()*ment.length);
+        // console.log( ran, "| ", ment[ran] );
+    
+        //p요소노드 > 텍스트노드(랜덤 텍스트)
+        let pTag = document.createElement('p'); //<p>
+        let txtNd = document.createTextNode(ment[ran]);    
+    
+        pTag.append(txtNd);
+        v_div.append(pTag);
+    });
+
+    
+</script>
+</body>
+</html>

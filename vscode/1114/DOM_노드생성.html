@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 2px solid blue;
+    }
+    </style>
+</head>
+<body>
+<pre>
+[Node생성]
+- createElement(태그명) - 요소 노드 생성
+- createAttribute(속성명) - 속성 노드 생성
+- createTextNode() - 텍스트 노드 생성
+</pre>
+
+    <div id="id_div">
+        <span>디브안에 스팬1</span>
+        <span>디브안에 스팬2</span>
+        <span>디브안에 스팬3</span>
+    </div>
+
+<script>
+
+    //요소 노드 생성
+    const pTag = document.createElement('p'); //p요소(태그)
+    console.log(pTag);
+
+    //속성 노드 생성
+    let titleAttr = document.createAttribute('title');
+    titleAttr.value = "속성값";
+    console.log(titleAttr);
+
+    pTag.setAttributeNode(titleAttr);
+
+    //텍스트 노드 생성
+    const txtNd = document.createTextNode("나는텍스트정보야");
+
+    //appendChild로 노드 추가
+    pTag.appendChild(txtNd);
+
+    //요소 검색 메소드를 활용하기(getElement~/querySelector~)
+    // document.querySelector('#id_div').appendChild(pTag);
+    // document.getElementById('id_div').appendChild(pTag);
+
+    const child3 = document.querySelector('span:nth-of-type(3)');
+    //요소 접근 속성 활용하기
+    // child3.parentNode.appendChild(pTag);
+    child3.parentNode.append(pTag);
+
+
+</script>
+</body>
+</html>

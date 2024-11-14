@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+      border: 2px solid rgb(19, 213, 61);
+    }
+    </style>
+</head>
+<body>
+    <div id="id_div">
+        <span>디브안에 스팬1</span>
+        <span>디브안에 스팬2</span>
+        <span>디브안에 스팬3</span>
+    </div>
+<pre>
+[Node추가]
+    <!-- 공통적으로 요소 내부의 추가기능을 제공하며, 기존대상을 상대로 이동기능 제공 -->
+    - appendChild() : 노드만 대상으로, 한개씩 추가 가능, 반환값 있음
+    - append() : 노드 및 DOMString대상으로, 여러개 추가 기능, 반환값은 없음
+    - DOMString대상으로 태그의 해석이 불가(요소로 활용불가), 단순한 텍스트로만 추가되는 형태를 제공
+    - insertBefore(node,position) : 노드만 대상으로, 원하는 위치에 추가 기능을 제공 
+
+[Node 삭제]
+    - removeChild(node) 
+    - remove()
+</pre>
+    <script>
+
+        const spanTag = document.createElement('span');
+        const rtn = spanTag.appendChild(document.createTextNode('디브안에 스팬4'),"추가~~");
+        // const rtn = spanTag.appendChild("추가~~"); // not of type 'Node' dlamfh dpfj
+        // const rtn = spanTag.append(document.createTextNode('디브안에 스팬4'), "<span>추가span5</span>");
+        
+        
+        console.log("반환>>",rtn);
+        console.log(spanTag);
+
+        const v_parent = document.querySelector('#id_div')
+        v_parent.appendChild(spanTag);
+
+
+        let spanTag2 = document.createElement('span');
+        spanTag2.appendChild(document.createTextNode("디브안에 스팬0"));
+        console.log(spanTag2);
+
+        //insertBefore()이용해서 div내부 앞쪽에 요소 추가하기
+
+        //스팬1위치 
+        console.log("스팬1>> ",v_parent.firstChild.nextSibling);
+        console.log("스팬1>> ",v_parent.firstElementChild);
+        console.log("스팬1>>",v_parent.childNodes[1]);
+        console.log("스팬1>>",v_parent.children[0]);
+
+        // v_parent.insertBefore(spanTag2,위치); // 위치가 null일 때 append와 동일(내부뒷쪽에 배치)
+        v_parent.insertBefore(spanTag2,v_parent.childNodes[1]); //위치를 대상으로 insertBefore
+        
+        //노드 삭제하기
+        console.log(v_parent.childNodes.length); // 9
+        console.log(v_parent.children.length); //5 : 눈에 보이는 요소만 반환
+        v_parent.removeChild(v_parent.childNodes[v_parent.childNodes.length-1]);
+
+        
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 파일명+확장자로 리스트 표현
+    같은 확장자인 파일명으로만 리스트 표현 -->
+    <input type="button" value="실행">
+    <ul>
+        <li>ala<img></li>
+        <li>bara1</li>
+        <li>bara2</li>
+        <li>lion</li>
+    </ul>
+
+    <script>
+        document.querySelector('input').addEventListener('click',function(){
+
+            //리스트 목록을 가져와 내부 텍스트 정보 얻기
+            // document.getElementsByName('li')
+            const v_lis = document.querySelectorAll('li');
+
+            for(let i=0; i<v_lis.length; i++){
+                //리스트의 내부 텍스트 정보 얻기
+                // console.log("li요소들>> ", v_lis[i].firstChild.data);
+                // console.log("li요소들>> ", v_lis[i].firstChild.nodeValue);
+                // console.log("li요소들>> ", v_lis[i].textContent);
+
+                const v_src = v_lis[i].firstChild.data;
+
+                //이미지 요소 생성하기
+                let v_img = document.createElement('img'); // <img>
+
+                //필수 속성 src, alt
+                //createAttribute() 사용해도 좋지만,
+                //더 간단한 방식
+                v_img.src = "../images/" + v_src + ".jpg";
+                // v_img.alt = "대체텍스트";
+
+                let v_alt = document.createAttribute('alt');
+                v_alt.value = "alternate";
+                v_img.setAttributeNode(v_alt);
+
+                //이미지 사이즈 속성 정의
+                // v_img.style.width = "100px";
+                // v_img.setAttribute('style','width: 140px');
+                v_img.setAttribute('style','border-radius:70px');
+                
+
+                console.log(v_img);
+
+                //각 요소의 뒤에 이미지 추가하기
+                v_lis[i].append(v_img);
+            }
+        });
+
+
+    </script>
+</body>
+</html>

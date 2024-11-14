@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="확인"
+    onclick="proc()">
+    <div id="target"></div>
+    <script>
+
+        const ranStr = ['맑음','흐림','비','눈','구름'];
+
+        function proc(){
+            const ranSu = Math.floor(Math.random()*ranStr.length); //배열 갯수만큼 랜덤수범위지정
+            const text = ranStr[ranSu]; //날씨텍스트 중 하나를 무작위로 저장
+            const txtNd = document.createTextNode(text);
+            console.log(ranSu, text, txtNd);
+
+            document.querySelector('#target').appendChild(txtNd);
+        }
+    </script>
+    
+</body>
+</html>
