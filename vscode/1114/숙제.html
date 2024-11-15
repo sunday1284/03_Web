@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+
+    <style>
+    img {
+        width: 40px;
+        height: 40px;
+    }
+    </style>
 </head>
 <body>
     <ul>
@@ -16,8 +23,18 @@
 function f_img(p_this){
 
     console.log(p_this); //각li요소가 전달되고 있어요
-    //요소를 가지고 정보를 빼내 이미지를 만들어서
-    //매개변수로 전달된 각 요소의 위치 내부에 이미지 추가하기
+    //요소의 정보로  이미지를 생성하고
+//    console.log(
+    // p_this.innerText,
+    // p_this.textContent,
+    // p_this.firstChild.data,
+    // p_this.firstChild.nodeValue);
+
+    const v_img = document.createElement('img');
+    v_img.src = "../images/" + p_this.textContent + ".jpg";
+    v_img.alt = p_this.firstChild.data;
+    //매개 변수로 전달된 각 요소 내부에 이미지 추가
+    p_this.appendChild(v_img);
 }
 
 </script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 방식1. 인라인 방식 - 보통 test용으로 씀 -->
+    <button onclick="alert('gg')">인라인 방식</button>
+    <button>이벤트 핸들러 방식</button>
+    <button>이벤트 리스너 방식</button>
+    <button>이벤트 제거</button>
+<script>
+/*
+    방식2. 이벤트핸들러 방식 - 사건(event action)과 그에 대한 동작을 핸들러라고 하자
+            >> 하나의 요소에 하나의 이벤트만 처리 가능
+
+    웹 문서에 이벤트가 발생시 어떤 함수를 실행할지 웹 브라우저에게 알리는 역할을 한다.
+    이벤트 핸들러 또는 이벤트 처리기라고도 불린다.
+    이벤트 앞에 'on'을 붙여 사용
+*/
+ document.querySelector('button:nth-of-type(2)').onclick = function(){
+    alert("이벤트 핸들러 11");
+ };
+ 
+ let v_count = 0;
+ document.querySelector('button:nth-of-type(2)').onclick = function(){
+    alert("이벤트 핸들러 22");
+
+    v_count++;
+    console.log("이벤트 " + v_count + " 실행");
+    //이벤트 리스너 추가
+    //대상에 여러 이벤트가 누적되고 모두 실행하므로 의도하지 않은 반복적인 결과를 나타낼 수 있음 주의
+    document.querySelector('button:nth-of-type(3)').addEventListener('click',function(){
+        alert(v_count + "회 실행한다");
+    });
+ };
+
+ /*
+    방식3. 이벤트리스너 방식 - 이벤트를 감지하면 인자로 받은 함수를 실행한다.
+            >> 하나의 요소가 여러개의 이벤트를 처리 가능
+*/
+
+ let a, b;
+ document.querySelector('button:nth-of-type(3)').addEventListener('click', a =function(){
+    alert("이벤트 리스너 11");
+ });
+
+ document.querySelector('button:nth-of-type(3)').addEventListener('click', b = function(){
+    alert("이벤트 리스너 22");
+ });
+
+
+
+ // removeEventListener(삭제할 이벤트명, 제거될 함수) - 2 argument required
+ document.querySelector('button:nth-of-type(4)').addEventListener('click',function(){
+    //3번째 버튼의 click이벤트 제거
+    document.querySelector('button:nth-of-type(3)')
+        .removeEventListener('click',b);
+ });
+
+</script>
+</body>
+</html>

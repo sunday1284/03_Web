@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border-style: solid;
+        margin: 20px;
+    }
+    </style>
+</head>
+<body>
+    <!-- 1115 -->
+    <a href="//naver.com">네이버로 가기</a>
+    <a href="../images/ala.jpg">이미지 보기</a>
+    <a href="../images/ala.jpg" download>이미지 다운로드</a>
+
+    <div onclick="f_hm(this)">할머니
+        <div onclick="f_mom(event,this)">맘
+            <div onclick="f_na(event,this)">나</div>
+        </div>
+    </div>
+
+    
+    <script>
+        function f_hm(p_this){
+            p_this.style.backgroundColor = "brown";
+        }
+        function f_mom(e, p_this){
+            p_this.style.backgroundColor = "gold";
+            e.stopPropagation();
+        }
+        function f_na(e, p_this){
+            p_this.style.backgroundColor = "blue";
+            //중첩된 모든 영역의 이벤트가 실행됨을 막기위한 메소드
+            //버블링 - 이벤트가 발생된 지점을 브라우저가 알지 못하므로 
+            // 모든 위치 이벤트가 한번에 발생되는데, 연쇄적으로 부모의 영역까지 이벤트가 발생되는 현상
+            e.stopPropagation();
+        }
+
+        document.querySelector('a').addEventListener('click',function(e){
+            e.preventDefault(); //a태그의 기본 실행을 중지시킨다. (=링크 막음)
+        });
+
+
+        const aTag = document.querySelectorAll('a');
+        aTag[1].addEventListener('click', function(e){
+            e.preventDefault(); //이미지 보기 중지
+        });
+
+        aTag[2].addEventListener('click', function(e){
+            e.preventDefault(); //이미지 다운로드 중지
+        });
+        
+
+
+
+
+
+    </script>
+</body>
+</html>

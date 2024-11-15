@@ -7,6 +7,10 @@
     img {
         width: 50px;
         height: 50px;
+        margin: 5px;
+    }
+    div {
+        font-size: 0;
     }
     </style>
 </head>
@@ -20,5 +24,49 @@
     </div>
     <input type="button" value="실행">
     <input type="button" value="중지">
+
+<script>
+    const v_inputs = document.querySelectorAll('input');
+
+    const v_parent = document.querySelector('div');
+
+    let timer;
+
+    v_inputs[0].addEventListener('click',function imgLoop(){
+        
+        //첫번째 항목의 이미지 얻기
+        // console.log(v_parent.childNodes[1], v_parent.children[0], v_parent.firstElementChild);
+       
+        //맨 앞 요소를 뒤로 보내서 왼쪽으로 이동되는 형태 제공
+        // v_parent.appendChild(v_parent.children[0]); //내부 뒤로 이동
+
+        //  console.log(v_parent.childNodes[v_parent.childNodes.length-2],v_parent.children[v_parent.children.length-1]);
+
+        //맨 뒤의 요소를 앞으로 보내서 오른쪽으로 이동되는 형태
+        v_parent.insertBefore(v_parent.lastElementChild, v_parent.firstChild);
+
+
+        //타이머함수를 통해 호출되는 내부함수가 가리키는 this-> window를 btn1로 변경함 
+        //call, apply사용시 함수가 바로 실행되므로 - bind를 이용해 this의 대상값만 설정해놓고 뒤에 실행하도록 함수만 제공
+        timer = setTimeout(imgLoop.bind(v_inputs[0]),1000);    
+
+        console.log("this>>", this);
+        this.setAttribute('style','visibility : hidden');// this.style= "display : none";
+      /*
+         this는 기본적으로 전역객체(window)에 바인딩되며, 함수 호출 방식에 따라 변화된다.
+         전역함수, 내부함수, 객체 메소드의 내부함수에서의 this도 window를 가리킴  
+      */  
+       
+
+
+
+    });
+
+    v_inputs[1].addEventListener('click',function(){
+        clearTimeout(timer);
+        v_inputs[0].setAttribute('style','visibility : visible');
+        // v_inputs[0].style = "display : inline"; //중지버튼을 누르면 실행 버튼이 다시 생김
+    });
+</script>
 </body>
 </html>

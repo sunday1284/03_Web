@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 1px double gold;
+        height: 70vh;
+        background-color: black;
+        color: white;
+        font-size: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <script>
+        document.querySelector('div').addEventListener('mousedown',function(e){
+            
+            console.log(e);
+            //이벤트에 대한 정보를 담고있는 이벤트 객체 
+            //                            리스너 방식은 콜백함수의 매개변수로 받음
+            //                            인라인 방식은 호출위치에서 event키워드로 전달
+            
+            
+            this.innerText = "이벤트의 대상요소 >> " + e.target.nodeName;
+            this.innerHTML += "<br> 적용된 이벤트 >> " + e.type + "<br>";
+            //click이벤트는 button속성으로 왼쪽 마우스만 0으로 표현 
+            //              which속성으로  왼쪽 마우스를 1로 표현 
+            //mousedown이벤트는 button속성으로 왼쪽0/가운데1/오른쪽2 제공 
+            //                 which 속성으로 왼쪽1/가운데2/오른쪽3 제공
+            this.innerText += "마우스가 눌린 방향 >> " + e.button;
+        });
+        document.querySelector('div').addEventListener('contextmenu',function(e){
+            e.preventDefault(); //오른쪽 버튼 눌렀을 때 기본적으로 표현되던 컨텍스트 메뉴 제거
+        });
+        
+    </script>
+    
+</body>
+</html>

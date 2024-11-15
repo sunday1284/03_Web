@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //의도와 다른 대상을 가리키는 this를 강제하기 위한 메소드
+        // call(), apply(), bind()
+    
+        function f_check(a,b,c,d,e,f,g){
+            console.log(this, this.name, a,b,c,d,e,f,g);
+        }
+        // f_check(); //this는 window를 가리킴
+    
+        const v_0 = {"name" : "뚜레쥬르"};
+        const v_1 = {"name" : "파리바게트"};
+        // f_check(v_0, "TLJ"); //this는 window를 가리키며, 각 인수가  매개변수 a, b로 전달된다.
+        
+        // f_check.call(this가 가리킬 대상을 지정,  매개변수로 전달할 인수1,2,3,...)
+        // f_check.call(v_0, 'apple','banana','carrot','donut','egg');
+
+        //call과 apply의 차이점은 전달하는 인수만 배열 형태로 변경되는 점
+        //한 배열의 각 항목이 각 매개변수와 매칭되며, 두번째 배열부터는 무시된다.
+        // f_check.apply(v_0, ['사과','바나나','당근','donut','egg'],['gg','faker']);
+
+        //bind - 함수를 호출하지 않고 매개변수를 가진 함수포인터만 반환한다.
+        let rtnFn = f_check.bind(v_1, "ㅎ",1,[true,null,false],[1,"2","3"],{key1: 'value1', "key2" : "value2", 'key3' : 'val3'});
+        rtnFn();
+        
+
+    
+    </script>      
+</body>
+</html>

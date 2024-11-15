@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<script>
+    // 전역함수(window, global한 영역)함수
+    function fnc(){
+        console.log("전역함수의 this >> ",this); //window 
+    }
+    fnc();
+     
+     
+    // 내부함수 
+    setTimeout(function(){
+        console.log("내부함수의 this >> ",this); // window
+    },2000);
+     
+     
+    // 객체 메소드의 내부함수에서의 this도 window를 가리킴
+    const obj = {
+        name : '객체',  //속성
+        print : function(){ //메소드
+            
+            console.log("여기this는 >> ",this); //obj 
+
+            //객체 메소드의 내부함수
+            function innerFnc(){
+                console.log("obj메소드의 this >> ",this);//window
+            }
+            innerFnc();
+        }
+          
+    };
+    obj.print(); 
+</script>
