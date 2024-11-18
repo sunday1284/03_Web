@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 1px solid;
+        /* height: auto; */
+        padding: 10px;
+        height: 200px;
+        overflow: auto;
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div>영역1</div>
+    <div>영역2</div>
+
+    <script>
+    let v_divs = document.querySelectorAll('div');
+
+    for(let i=0; i<v_divs.length; i++){
+        v_divs[i].addEventListener('dragover',function(e){
+            //dragover => 요소가 겹쳐지는 순간의 이벤트 (기본적으로 요소는 겹쳐지면 안되는 규칙)
+            e.preventDefault(); //중첩됨을 감지하는 이벤트를 제거 >> 드롭허용 상태
+        });
+
+        v_divs[i].addEventListener('drop',function(e){
+            //드롭되는 순간 읽기가능한 파일을 새탭으로 열어 보여주는 기능을 막아줌
+            e.preventDefault();
+
+            //드래그 대상을 드롭시키기
+            // console.log(e.dataTransfer.files);
+            let v_fileNm =  e.dataTransfer.files[0].name; //???
+
+            //이미지 생성 후 div영역에 표현하기
+            let v_img =  document.createElement('img'); //<img>
+            v_img.src = '../images/' +v_fileNm;
+            v_img.alt = v_fileNm;
+            // v_img.width = 100;
+            v_img.style.width = "200px";
+            // console.log(v_img);
+            this.append(v_img);
+        });
+    }
+
+    //window(창)을 상대로 같은 이벤트 중지
+    window.addEventListener('dragover',function(e){
+        e.preventDefault();
+    });
+    window.addEventListener('drop',function(e){
+        e.preventDefault();
+    });
+
+    
+
+
+    </script>
+</body>
+</html>

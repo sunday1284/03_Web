@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 1px solid;
+        /* height: auto; */
+        padding: 10px;
+        height: 200px;
+        overflow: auto;
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+<body>
+    <input type="file" id="attach">
+    <input type="button" value="출력">
+    <div> </div>
+
+    <script>
+        //로딩 직후 file얻지 못하는 이유 확인
+        document.querySelector('[type=button]').addEventListener('click',function(){
+          
+            console.log(document.getElementById('attach').files); //File객체 
+            let file = document.getElementById('attach').files
+            
+            //text파일의 정보를 표현하기 FileReader객체 사용하기
+            let rd = new FileReader();
+            
+            //1. readAsText(files)로 선택파일의 컨텐츠를 읽어냄 
+            //2. 읽은 정보를 result속성으로 반환받음
+            //3. 위 2과정은 비동기로 처리되므로 1번보다 2번이 먼저 실행될 수 있으며,
+            //      때문에 결과가  null로 표현될 수 있음
+            //4. 비동기처리로 인한 null을 해결(안정적인 결과를 얻기)하기 위해 load이벤트를 활용
+            //      >> load이벤트가 모든 준비 완료까지 대기 후 result를 통해 처리결과를 반환 
+
+            //대상위치의 모든 객체들을 로딩(준비)시킨 후 함수를 실행시킴
+           /*  rd.readAsText(file[0]); //첨부파일의 컨텐츠를 문자열로 읽기
+            rd.onload = function(){
+                let rst = rd.result;//읽어낸 정보를 result속성을 통해 반환받음
+                console.log(rst); //null이 아닌 결과를 잘 반환
+                document.querySelector('div').innerText = rst;
+            } */
+
+            //이미지 읽기 - readAsDataURL()
+            rd.readAsDataURL(file[0]);
+            rd.onload = function(){
+                console.log("load이벤트 했을 때 >> ", rd.result); //
+
+                //이미지 요소 생성 
+               let img = document.createElement('img');
+
+                img.src = rd.result;
+                img.alt = "러닝";
+                img.width = 40;
+
+                document.querySelector('div').append(img);
+            };
+              
+        });
+        
+
+    </script>
+</body>
+</html>

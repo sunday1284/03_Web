@@ -16,23 +16,42 @@
 </head>
 <body>
     <div>드롭될 위치</div>
-    <img id="ala" src="../images/ala.jpg" alt="ala">
+    <img id="ala" src="../images/ala.jpg" alt="ala" ><!--  draggable 기본값 auto적용 -->
+   
+    <!-- draggable - 드래그 가능 여부를 boolean으로 지정, 생략시 기본값 auto가 적용된다. 
+        >> href 속성(속성의 값은 없어도 됨)이 있는 a요소
+        >> src 속성에는 경로가 올바르게 지정된 (경로 이상시 불가) img 요소 
+        위 두 항목은 기본값 생략(auto)시 드래그 가능하며 그 외 항목은 드래그가 불가하다.    
+    -->
+
+    <a id="aTag" href="">하이퍼링크태그</a>
+    <span id="spanTag" draggable="true">스팬요소</span>
+
+    
 
     <script>
+        // 0. 드래그 대상에는 draggable 속성을 true로 설정한다.
         // 1. 이미지요소를 상대로 dragstart이벤트 -> DataTransfer 객체에 이미지정보 저장
         // 2. 도롭될 위치(div)를 대상으로 dragover이벤트에 대한 기능을 무력화 시키기(>> 드롭허용상태완성)
         // 3. div에 drop이벤트 -> DataTransfer객체의 이미지 정보를 가지고 이미지 표현 
 
-        document.querySelector('img').addEventListener('dragstart',function(e){
-            console.log(e.target.id);
-            e.dataTransfer.setData('targetId',e.target.id);
-        });
+        // document.querySelector('img').addEventListener('dragstart',function(e){
+        // document.querySelector('a').addEventListener('dragstart',function(e){
+        
+        //body(document)내부의 모든 요소를 대상으로 드래그 대상을 지정한다.
+        //자바스크립트는 단일 대상을 특정하여 결과를 반영하므로 순차적인 적용을 위해 for문을 사용했음
+        let bodys = document.querySelectorAll('body *');
+
+        for(let i=0; i<bodys.length; i++){
+            addEventListener('dragstart',function(e){
+                // console.log(e.target.id);
+                    e.dataTransfer.setData('targetId',e.target.id);
+            });
+        }
 
         document.querySelector('div').addEventListener('dragover',function(e){
             //dragover이벤트 - 겹쳐지는 순간에 대한 이벤트 -> 중지 -> 겹침상태가 가능하게 만들어주는..
             e.preventDefault();
-
-
         });
         document.querySelector('div').addEventListener('drop',function(e){
             //드롭되는 순간 dataTransfer객체의 targetId키로 얻은 정보를 이미지로 가공해서 화면에 뿌려주기
@@ -44,14 +63,13 @@
             // v_img.src = 
 
             //요소를 이동시키기 
+            //append의 대상이 DOM에 존재시 기존 위치에서 제거 후 새 위치로 이동 
             e.target.append(document.querySelector('#'+tgId));
 
         });
-
-
-
-
-
+  
+    
+       
 
     </script>
 </body>
