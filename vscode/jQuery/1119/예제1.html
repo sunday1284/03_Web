@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 요소보다 스크립트가 위에 있으니
+    문서준비코드도 넣어줌 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- <script src="../../js/jquery-3.7.1.js"></script> -->
+    <script>
+    $(function(){
+        //전체 배경색 변경 - *
+        $('*').css('background-color','gold');
+        //h1요소의 글자색 파랗게 -h1
+        $('h1').css('color','blue');
+        //id=para인 요소 글자색 초록 - #para
+        $('#para').css('color','green');
+        //class=sample인 요소 빨강 - .sample
+        $('.sample').css('color','red');
+    });
+    </script>
+</head>
+<body>
+    <h1>제목입니다.</h1>
+    <h2 id ="para">작은 제목입니다.</h2>
+    <h3 class="sample">샘플입니다.</h3>
+</body>
+</html>

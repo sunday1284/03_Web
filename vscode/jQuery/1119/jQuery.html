@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 라이브러리 CDN 방식 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- 라이브러리 다운로드 방식 -->
+    <!-- <script src="../../js/jquery-3.7.1.js"></script> -->
+    <script>
+
+        // alert("js로 접근한 " + document.querySelector('div').innerText);
+
+        //DOM요소 'div'를 jQuery요소 'div'로 반환해줌
+        //jQuery에서는 각 기능을 메소드 형태로 제공하며,
+        //제공되는 메소드는 제이쿼리 요소를 대상으로만 사용 가능
+        
+        //문서의 시작점인 document를 jQuery요소로 변환 후
+        // jQuery요소 대상으로 ready()메소드를 적용하여 내부적인 함수를 실행 
+        // jQuery -> 일괄처리 기능을 가짐
+        //요소와 스크립트의 위치에 따라 문서 리소스를 준비시키는 코드가 필요하며
+        //각자 방식의 코드 내부에서도 자유롭게 문장을 기술할 수 있다.
+        //단, 각자 요소에 사용 가능한 속성/메소드가 구분되어 있고, 교차로 활용 불가능하다. 
+        // window.onload = function(){
+        // $(document).ready(function(){ //Jquery 3.0~버전 이후부터 deprecated됨
+        $(function(){
+            console.log($('div').text());
+
+            //js방식 속성 설정
+            document.querySelector('div').style.color = 'gold';
+            document.querySelector('div').style.backgroundColor = 'red';
+            // document.querySelector('div').style.display = 'none';
+            // document.querySelector('div').style.display = 'block';
+
+            //jq방식 속성 설정 
+            $('div').css('backgroundColor','navy').css('color','white');
+            // $('div').hide();
+            // $('div').show();
+        });
+        // });
+        // }
+
+
+        //DOM요소에 jQuery메소드 사용 불가
+        // alert(document.querySelector('div').test());
+        
+
+    </script>
+
+    <div>최윤식</div>
+
+</body>
+
+</html>

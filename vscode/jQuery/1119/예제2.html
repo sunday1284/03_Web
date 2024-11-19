@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<!-- js 방식 먼저 작성 -->
+<script>
+    // window.onload = function(){}
+    document.addEventListener('DOMContentLoaded', function () {
+
+        let v_h4s = document.querySelectorAll('h4');
+
+        for (let i = 0; i < v_h4s.length; i++) {
+            //각 h4 요소에 click이벤트를 먼저 부여해야함
+            v_h4s[i].addEventListener('click', function () {
+
+                //선택항목의 정보 확인하기
+                console.log(this);
+                this.style.display = "none";
+            });
+        }
+    });
+</script>
+
+<body>
+    <h4>클릭하면 사라집니다1</h4>
+    <h4>클릭하면 사라집니다2</h4>
+    <h4>클릭하면 사라집니다3</h4>
+    <h4>클릭하면 사라집니다4</h4>
+    <h4>클릭하면 사라집니다5</h4>
+</body>
+
+</html>
