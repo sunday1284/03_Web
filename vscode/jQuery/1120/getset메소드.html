@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+    $(function(){
+        //text() - innerText 대체 메소드
+        // 모든 대상요소의 (tag를 제외한) text정보만 얻음
+        // console.log($('p').text()); //get
+        
+        //html() - innerHTML 대체 메소드
+        // 대상요소가 여러개라도 그 중 첫번째 대상의 태그를 포함한 정보를 얻음
+        // console.log($('p').html()); //get
+        
+        //val() - value대체 메소드
+        //대상(입력양식)요소가 여러개라도 그 중 첫번째 대상의 value만 얻음 
+        // console.log($('input').val()); //get
+
+        //each버튼에 이벤트 주기 
+        // eq() - element queue,  요소행렬
+        $('input').eq(0).on('click',function(){
+            
+            //선택자 대상 each() - $(selector).each(function(idx,val){})
+            $('p').each(function(idx,val){
+                // console.log("순차적인 index>>",idx);
+                // console.log("순차적인 value>>",val);
+                // console.log("순차적인 value>>",this);
+
+            //    console.log($(val).text()); //?
+               console.log($('p').html()); //?
+            })
+        });
+
+    });
+    </script>
+</head>
+<body>
+    <p>1 <span>🍓</span></p>
+    <p>2 <span>😂😂</span></p>
+    <p>3 <span>🤑🤑🤑</span></p>
+
+    <input type="button" value="each">
+    <input type="button" value="btn2">
+    <input type="button" value="btn3">
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+   
+    </style>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(function(){
+    $('input', $('#frm2')).css('color','red')
+        .css('font-weight','bold')
+        .css('direction', 'rtl');
+
+    $('form').on('click',function(){
+        $('input').css('backgroundColor', 'white'); //배경색 초기화
+        $('input',this).css('backgroundColor', 'gold');
+    });
+
+
+    
+});
+</script>
+<body>
+<pre>
+$('selector'[,context]) 
+선택자를 검색할 범위 지정, 생략시 문서 전체에서 선택자를 검색
+</pre>
+<!-- form#frm2>input -->
+<form id="frm1">
+    <input type="text">
+</form>
+
+<form id="frm2">
+    <input type="text">
+</form>
+
+<form id = "frm3">
+    <input>
+</form>
+</body>
+</html>

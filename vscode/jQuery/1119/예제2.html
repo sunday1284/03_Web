@@ -4,33 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+    button {
+        display: none;
+
+    }
+    </style>
 </head>
 
-<!-- js 방식 먼저 작성 -->
+<script src="../../js/jquery-3.7.1.js"></script>
 <script>
-    // window.onload = function(){}
-    document.addEventListener('DOMContentLoaded', function () {
+//jq방식도 써봅시다.
+$(function(){
+    //h4요소 얻기
+    //jQuery방식의 이벤트 부여 - on(이벤트명, 콜백함수)
+    //jQuery는 선택된 모든 대상에 일괄 적용하는 특징이 있다.
+    $('h4').on('click',function(){
+        // this.hide(); //DOM객체를 상대로 jQuery메소드 사용 불가 
+        $(this).hide();
 
-        let v_h4s = document.querySelectorAll('h4');
-
-        for (let i = 0; i < v_h4s.length; i++) {
-            //각 h4 요소에 click이벤트를 먼저 부여해야함
-            v_h4s[i].addEventListener('click', function () {
-
-                //선택항목의 정보 확인하기
-                console.log(this);
-                this.style.display = "none";
-            });
+        //모든 요소가 사라졌을 때, 숨겨져 있는 버튼 요소 보이기
+        //filter중 : visible를 사용해 현재 보여지는 대상 값을 조건으로 사용
+        if($('h4:visible').length < 1){
+            $('button').show();
         }
+        // $('button').show();
     });
-</script>
 
+    //버튼 클릭 이벤트로 숨겨진 h4요소 보이기 
+    //화살표 함수를 사용시 this가 가리키는 대상은 일반적으로 생각하는  대상과 다름
+    // 정해진 규칙이 있는데 그것은 다음 기회에...
+    $('button').on('click',()=>{
+        $('h4').show();
+        //버튼 숨김 
+        // console.log(this); //document를 가리킴
+        $('button').hide();
+    });
+
+
+});
+
+
+//js방식 먼저 작성해봅시다.
+// window.onload = function(){}
+/* document.addEventListener('DOMContentLoaded', function () {
+
+    let v_h4s = document.querySelectorAll('h4');
+    let v_count = 0;
+    let v_btn = document.querySelector('button');
+
+    //자바스크립트는 하나씩 적용되므로 for문으로 반복시켜야 한다.
+    for (let i = 0; i < v_h4s.length; i++) {
+        //각 h4 요소에 click이벤트를 먼저 부여해야함
+        v_h4s[i].addEventListener('click',function(){
+
+            //선택항목의 정보 확인하기
+            console.log(this);
+            this.style.display = "none";
+            v_count++;
+
+            //모든 대상이 사라졌을 때 버튼 요소 보이기 
+            console.log(">>>>>",v_count, v_h4s.length);
+            if(v_count == v_h4s.length){
+                v_btn.style.display = "inline";
+                //v_count값을 초기화
+                v_count = 0;
+            }
+        });
+    }
+
+    //버튼 이벤트로 숨겨진 h4요소 나타내기 
+    v_btn.onclick = function(){
+        for(let i=0; i<v_h4s.length; i++){
+            v_h4s[i].style.display = "block";
+        }
+        //버튼 다시 숨기기 
+        this.style.display = "none";
+    };
+}); */
+</script>
 <body>
     <h4>클릭하면 사라집니다1</h4>
     <h4>클릭하면 사라집니다2</h4>
     <h4>클릭하면 사라집니다3</h4>
     <h4>클릭하면 사라집니다4</h4>
     <h4>클릭하면 사라집니다5</h4>
+    <button>보이기</button>
 </body>
 
 </html>
