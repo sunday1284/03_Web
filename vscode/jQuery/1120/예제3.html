@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <ul>
+        <li>김경민</li>
+        <li>최윤식</li>
+        <li>최윤식</li>
+    </ul>
+    <button>버튼</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $('button').on('click',function(){
+            $('li').each(function(i,v){
+                //문자열 결합은 왼쪽부터 오른쪽으로 연산방향이 진행된다.
+                console.log("" + i + 1 + "번째 item: " + v);
+                console.log(`${i + 1}  번째 item: ${v}`);
+                alert($(this).text());
+            });
+        });
+
+        const arr = ['apple', 'banana', 'orange'];
+        $.each(arr,function(i,v){
+            console.log(v, this);
+        });
+
+        $(arr).each(function(i,v){
+            console.log(v, this);
+        });
+
+
+
+    </script>
+</body>
+
+</html>

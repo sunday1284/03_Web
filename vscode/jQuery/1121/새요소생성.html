@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <button>새로만들기</button>
+
+    <div>클릭하세요</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // document.querySelector('button').addEventListener('click', function(){});
+    document.querySelector('button').onclick = function(){
+
+        // const body = $('body');
+
+        let elem = $('<p id=\'p1\'>Hello jQuery!!</p>');
+        elem.appendTo('body');
+
+    };
+    $('div').on('click',function(){
+        $('<p></p>',{
+            id:'p1',
+            text:'Hello jQuery~~~',
+            click:function(){
+                // console.log(this);
+                $(this).css('color','red')
+                        .css('fontSize','+=2px');
+            }
+        }).appendTo('body');
+    });
+  /*  document.querySelector('div').onclick = function(){
+        $("<p/>",{
+            "id": "p1",
+            "text" : "Hello jQuery~",
+            "click" : function(){
+                $(this).css('color','red')
+                .css('font-size,+=5px');
+            }
+        }).appendTo("body");
+   }; */
+
+
+
+    </script>
+    
+</body>
+</html>

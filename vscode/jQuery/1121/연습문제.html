@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button>이미지 추가1</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+    $('<button>동적버튼1</button>').appendTo('body');
+
+    $('<button></button>',{
+        text: '동적버튼2'
+    }).appendTo('body');
+
+    // <input type="button" value="">
+    $('<input>',{
+        type: 'button',
+        value: '동적버튼3'
+    }).appendTo('body');
+
+    $('input').on('mousedown',function(){
+
+        $('<img>',{
+            src : '../../images/lion.jpg',
+            alt : '라이온킹',
+            // style : 'width: 60px; height: 50px;',
+            width : 150,
+            height : 140,
+            click: function(){
+                //클릭시 테두리처리 
+                $(this).css('border', '6px double green');
+            }
+        }).appendTo('body');
+
+    });
+
+    
+    //button요소는 3개, input요소는 1개 
+    $('button').eq(2).on('click',function(){
+        //이미지 요소 동적 생성 
+        //<img src="" alt = "">
+        $('<img src="../../images/ala.jpg" alt ="코알라"'
+        +'style ="width: 50px; height: 50px;" onclick="f_click(this)">').appendTo('body')
+    });
+
+    // function f_click(){}
+    let f_click = function(p_this){
+        $(p_this).css('border', '2px dotted purple');
+    };
+
+
+
+
+
+    // $('button').eq(1).on('click',function(){
+    //     $('<button></button>',{
+    //         text: "이미지 보이기",
+    //          click : function(){
+    //             $('<img>',{
+    //                 src : '../../images/ala.jpg',
+    //                 alt : 'ala.jpg'   
+    //             }).appendTo('body');
+    //          }
+    //     }).appendTo('body');
+    // })
+</script>
+</body>
+</html>

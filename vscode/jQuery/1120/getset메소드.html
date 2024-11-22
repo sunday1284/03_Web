@@ -24,12 +24,20 @@
             
             //선택자 대상 each() - $(selector).each(function(idx,val){})
             $('p').each(function(idx,val){
-                // console.log("순차적인 index>>",idx);
-                // console.log("순차적인 value>>",val);
-                // console.log("순차적인 value>>",this);
 
-            //    console.log($(val).text()); //?
-               console.log($('p').html()); //?
+                // console.log($('p') ); //검색된 p요소의 갯수만큼 모든 p요소 반환
+                // console.log($('p').text()); //갯수만큼 반복적으로 모든 p요소의 텍스트 정보를 반환 
+                // console.log($('p').html()); //갯수만큼 반복적으로 첫번째 p요소의 태그를 포함한 텍스트 정보를 반환 
+                // console.log(" ---------------- ");
+
+                // console.log("순차적인 value >> ",val);
+                // console.log($(val).html()); //순차적인 대상요소의 태그를 포함한 정보 반환
+                
+                // console.log("순차적인 value >> ",this);
+                // console.log($(this).html()); //상동
+                
+                console.log("순차적인 value >> ",idx);
+                console.log( $('p').eq(idx).html()); //순차적인 요소의 태그를 포함한 정보 반환 
             })
         });
 
@@ -45,5 +53,68 @@
     <input type="button" value="btn2">
     <input type="button" value="btn3">
 
+    <hr>
+
+    <button>객체 대상 each</button>
+    <button>선택자 대상 each</button>
+
+<script>
+    const $btn = $('button');
+    //변수 명명 규칙상 특수문자는 _, $만 사용가능하다.
+
+    const obj = {
+        'key 1' : 'value1',
+        2 : 'value2',
+        "key3" : 'value3'
+    };
+    $btn.eq(0).on('click', function(){
+        //객체 대상 each - $.each(대상객체,function(){})
+
+
+        const arr = ['123',123,"일이삼"];
+
+
+
+        $.each(obj,function(i,v){
+            // console.log(i); //대상 객체의 순차적인 key정보가 반환됨
+            // console.log(v, typeof v, v[0]); //대상 객체의 순차적인 value정보가 string타입으로 반환됨
+            // console.log(this, typeof this, this[0]);    //객체의 순차적인 value정보를 object타입으로 반환
+        });
+
+        $.each(arr, function(i,v){
+            // console.log(i, v, typeof v, v[i]);   //순차적인 index, value를 반환 
+        });
+
+        //객체만 대상으로 사용가능
+        $.each($('p'),function(i,v){
+            console.log(i);
+            console.log(v);
+            console.log(this);
+        });
+    });
+
+    
+    $btn.eq(1).on('click',function(){
+        //선택자 대상 문법에 객체를 대상으로 지정해서 결과  확인 
+        $(obj).each(function(i,v){
+            console.log("반환되는 index >> ", i);
+            console.log("반환되는 value >> ", v);
+            console.log("반환되는 value >> ", this);
+
+            //객체의 속성에 접근해서 상세정보 얻기
+            //.점 표기법 - 일반적으로 많이 사용되는 형태,표준 식별자를 상대로 사용
+            //[]대괄호 표기법 - 표준 식별자가 아닌 형태 또는 숫자로 된 key 
+            //                 반드시 대괄호 안쪽에 문자열형태(따음표사용)로 접근해야 한다.
+
+            // console.log( "잘못된 접근 >> ", v.key 1);
+            console.log( "잘된 접근 >> ", v["key 1"]);
+            // console.log("잘못된 접근>> ", v.2);
+            console.log( "잘못된 접근 >> ", v[2]); //숫자 key는 따음표 사용유무 없음
+        });
+
+
+
+    });
+</script>
 </body>
 </html>
