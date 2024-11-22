@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    span:nth-of-type(2) {
+        border-style: solid;
+        padding: 0 100px;
+    }
+    </style>
+</head>
+<body>
+    <span>취미 : </span>
+    <input type="checkbox", value="여행" checked>여행
+    <input type="checkbox", value="브이로그">브이로그
+    <input type="checkbox", value="베이킹">베이킹
+    <input type="checkbox", value="슬라임" checked>슬라임
+    <input type="checkbox", value="골프">골프
+
+    <input type="button" value="선택">
+
+<script src="../../js/jquery-3.7.1.js"></script>
+<script>
+    // $('input').eq(5)
+    // $('[type=button]')
+    $(':button').on('click',function(){
+
+        const arr = [];
+        //입력양식선택자:상태필터
+        $(':checkbox:checked').each(function(i,v){
+            // console.log(i,v); //index와 요소가 순차적으로 들어옴
+            // console.log(this.value); //js방식으로 정보 얻음
+            // console.log($(this).val()); //jq방식으로 정보 얻음
+
+            arr.push($(v).val());
+        });
+        console.log("나의 취미는 : " + arr);
+
+    });
+</script>
+
+    <hr>
+    <h4>봄소식 : </h4>
+    <select id="sel1">
+        <option>개나리</option>
+        <option>진달래</option>
+        <option>민들레</option>
+        <option>목련</option>
+        <option>왕벚꽃</option>
+    </select>
+    <span id = "disp"></span>
+
+    <hr>
+
+    <select id="sel2" multiple size="5">
+        <option>개나리</option>
+        <option>진달래</option>
+        <option selected>민들레</option>
+        <option>목련</option>
+        <option>왕벚꽃</option>
+    </select>
+    <button>확인</button>
+
+<script>
+
+    $('button').on('click',function(){
+        const arr = [];
+        //선택자:상태필터.each(fnc(){선택항목만 받아내고 결과 출력})
+        console.log($('#sel2 option:selected'));
+        $('#sel2 option:selected').each(function(i,v){
+           
+            console.log("선택된 항목의 요소가 반환됨>> ",$(v).text());
+            arr.push($(v).val());
+        });
+        alert("선택한 꽃 >> " + arr);
+    });
+    
+    $('#sel1').on('change', function(){
+        // alert(this.value ); //단일 값 얻음
+        // alert($(this).val() ); //jqu방식 단일 값 얻음
+        $('#disp').text($(this).val());
+    });
+
+
+</script>
+
+
+</body>
+</html>

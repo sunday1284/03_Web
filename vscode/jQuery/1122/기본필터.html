@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>:first</li>
+        <li>:list</li>
+        <li>:eq(index)</li>
+        <li>:gt(index)</li>
+        <li>:lt(index)</li>
+        <li class="not">:even-짝수</li>
+        <li class="not">:odd-홀수</li>
+        <li class="not">:not(selector)</li>
+    </ul>
+<script src="../../js/jquery-3.7.1.js"></script>
+<script>
+    //first, last, eq, lt, gt는 3.4버전부터 메소드로 대체 권장
+    // $('li:first').css('color','red');
+    $('li').first().css('color','red');
+
+     // $('li:last').css('color','purple');
+    $('li').last().css('color','purple');
+
+    // $('li:eq(1)').css('color', 'orange');
+    $('li').eq(1).css('color', 'orange');
+
+    // $('li:gt(1)').css('color', 'yellow');
+    // $('li:lt(6)').css('color', 'green'); 
+    //lt와 gt는 slice(str,end직전)로 대체
+    $('li').slice(2,6).css('color','pink');
+
+    // $('li:odd').css('color', 'blue'); //홀수 
+    // $('li:even').css('color', 'orange'); //짝수
+
+
+    $('li:not(".not")').css('text-decoration','line-through');
+    
+
+</script>
+</body>
+</html>

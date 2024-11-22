@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+:enabled {
+  border: 1px ridge blue;
+}
+:disabled {
+  border: 1px groove red;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+$(function(){
+
+  // 스타일 적용시점 때문에 요소 상태에 변화가 생겨도 스타일이 적절하게 반영되지 못함 >> CSS로 해결
+  // $(':enabled').css('border','1px ridge blue');
+  // $(':disabled').css('border','1px groove red');
+
+  // JS - 단일 속성 변경
+  // let inputs = document.querySelectorAll('input'); //select, textarea 포함되지 않음
+  // inputs[2].removeAttribute('disabled');
+  
+  // let forms = document.querySelectorAll('form *');
+  // for(let i=0; i<forms.length; i++){
+    // forms[i].removeAttribute('disabled');
+    // forms[i].setAttribute('enabled',true); //x, 현재 적용된 속성(disabled,false)도 적용안됌
+    // forms[i].setAttribute('disabled', false); //x, 현재 적용된 속성(disabled,false)도 적용안됌
+    // forms[i].disabled = false; //점연산자로 접근하여 boolean적용
+  // }
+  
+  // JQ - 일괄 속성 변경
+  let $inputs = $(':input'); //입력양식선택자
+  console.log($inputs.length);
+  
+  $inputs.removeAttr('disabled');
+  // $inputs.attr('disabled', false); // 현재 적용된 속성(disabled) 대상으로만 boolean 적용가능
+  // $inputs.attr('enabled',true); //x
+});
+</script>
+</head>
+<body>
+  <h4>:enabled :disabled</h4>
+  <form>
+    <input id="txt" disabled> <br>
+    <input type="password" id="pw" disabled> <br>
+    <select id="sel" disabled>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+    </select> <br>
+    <textarea id="mtline" disabled>multiline</textarea> <br>
+    <input type="button" value="확인" onclick="alert()" disabled>
+  </form>
+</body>
+</html>
