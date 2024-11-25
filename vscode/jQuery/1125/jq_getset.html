@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div data="n1">디브1</div>
+    <div data="n4">디브2</div>
+    <div data="n9">디브3</div>
+    <div data="n10">디브4</div>
+
+    <input name="n_txt" value="aa">
+    <input name="n_txt" value="bb">
+    <input name="n_txt" value="aa">
+    <input name="n_txt" value="bb">
+<script src="../../js/jquery-3.7.1.js"></script>
+<script>
+/* 
+    text() - 모든 정보 읽음(get) / 모든 대상에 적용(set) 및 콜백으로 일부 대상을 골라 적용
+    html() - 첫번째 항목만 읽음  / 모든 대상에 적용(set) 및 콜백으로 일부 대상을 골라 적용
+    val() -  첫번째 항목만 읽음  / 모든 대상에 적용(set) 및 콜백으로 일부 대상을 골라 적용
+
+*/
+
+    //1번 div요소의 내용을 모든 텍스트필드에 넣기
+    // 모든 텍스트필드.text(첫번째 div요소의 컨텐츠)
+    $('input').val($('div').eq(0).text());  //일괄로 셋팅 
+
+    //1번,4번 텍스트필드의 내용을 'DIV'로 바꾸기
+    // $('input').val(); //여러 input요소 중 첫번째의 정보를 get
+    // $('input').val('일괄변경'); //모든 input요소(4개)에 일괄 set
+
+    $('input').val(function(i,v){
+        // console.log(this); //실제 대상요소가 순차적으로 반환 
+        // console.log(i);    //대상요소의 순차적인 '인덱스' 반환 
+        // console.log(v);    //대상요소의 순차적인 'value'값 반환 
+
+        if(i==0 || i==3) return "DIV~";
+        return v; //조건 외 항목의 값도 반환처리 
+    });
+
+    //2번,3번 div요소의 내용을 'div'로 바꾸기
+    $('div').text(function(i){
+        if(i==1 || i==2) return "div";
+        //조건외 항목 값 반환처리 없이도 원복됨
+    });
+
+
+
+    //div요소에 문자 'd'가 있는 항목만 스타일 변경하기
+    $('div').html(function(i,v){
+        console.log(v.indexOf("d")); //d존재여부 판단 필요 
+        //js - 자동형변환을 제공하는 언어로 0 -> false로 형변환
+        if(v.indexOf("d")){ //d가 존재하는 대상요소의 index0 -> false -> !false->true
+            // console.log(this); //특정 항목에만 스타일 반영
+            this.style.color = "red";
+            $(this).css('backgroundColor','gold')
+                   .css('backgroundColor','gold')
+                   .css('backgroundColor','gold');
+        }
+    });
+
+
+</script>
+</body>
+</html>

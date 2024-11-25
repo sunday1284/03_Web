@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    img {
+        width: 80px;
+        height: 80px;
+    }
+    </style>
+</head>
+<body>
+    <h4>attr() - 요소의 속성 정보 얻기/설정하기 [파일명 추출 후 title속성으로 설정하기]</h4>
+    <img src="../../images/ala.jpg" title="a">
+    <img src="../../images/lion.jpg" title="b">
+    <img src="../../images/bara6.webp" title="c">
+    <img src="../../images/bara1.jpg" title="d">
+    <img src="../../images/bara4.jfif" title="e">
+
+<script src="../../js/jquery-3.7.1.js"></script>
+<script>
+
+    //get - (html,val메소드처럼 공통적으로) 첫번째 항목만 반환 
+    console.log($('img').attr('alt'));
+
+    //set1 - 모든 항목에 단일 속성을 일괄 적용 
+    $('img').attr('title', '타이틀을 일괄값으로..');
+
+    //set2 - 각 항목에 서로 다른 속성값을 적용할 수 있도록 콜백함수를 이용...
+    $('img').attr('title',function(i,v){
+        // console.log($('img')); //대상요소의 갯수만큼 전체 요소가 반환 
+        // console.log($('img').attr('src')); //전체 요소 중 첫번째 항목의 src속성만 5회 반환 -> 적절하지않음
+        
+        // console.log(this); //순차적인 요소가 반환 
+        // console.log(i); //순차적인 인덱스가 반환 
+        // console.log(v); //순차적인 title속성값이 반환
+        
+        let v_src = $(this).attr('src')
+        // console.log(v_src);
+
+        //문자열 추출 메소드 -substring(str, end), slice(str, end), substr()
+        let str = v_src.lastIndexOf("/")+1; 
+        let end = v_src.lastIndexOf("."); 
+        console.log("추출된 파일명 >> ", v_src.slice(str,end));
+
+        return v_src.slice(str,end);
+    });
+
+    $('img').eq(0).removeAttr('src'); //src속성 제거 
+    $('img').eq(0).attr({
+        src :'../../images/bara2.jpg',
+        alt :'베라2',
+        title :'베스킨라벤스',
+        style :'border : 3px solid blue;'
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div {
+  background-color: yellow;
+  height: 25px;
+}
+p {
+  border: 3px solid gray; 
+}
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+  <button>empty</button>
+  <button>remove</button>
+  <button>remove(sel)</button>
+  
+  <div>
+    <p id="pp">Hello jQuery</p>
+  </div>
+  <div>
+    <p>Hi jQuery</p>
+  </div>
+  <p>안녕하세요</p>
+  <p id="pp">jQuery입니다</p>
+
+<script>
+	$(':button').eq(0).click(function(){
+    $('div').eq(0).empty(); //대상요소의 자식만 지움
+	});
+
+	$('button:nth-child(2)').click(function(){
+    $('div:nth-of-type(2)').remove(); //대상요소와 그 자식까지 모두 지움
+	});
+	
+	$('button:nth-of-type(3)').click(function(){
+    // $('p').remove();
+    $('p').remove('#pp'); //:nth-child(7)
+		
+    //참고
+    // $('p').remove('p:nth-of-type(1)'); //모든 p요소들 중 첫번째 대상
+		// $('p').remove(':nth-of-type(1)');
+	});
+</script>
+</body>
+</html>

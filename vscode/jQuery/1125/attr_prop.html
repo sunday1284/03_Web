@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" disabled = 'disabled'>
+
+ <script src="../../js/jquery-3.7.1.js"></script>
+<script>
+    let $input = $('input');
+
+    //attribute - html문서 상의 요소의 속성 >> 요소에 추가적인 정보를 제공 
+    console.log($input.attr('disabled')); //disabled
+    //property - 문서가 브라우저를 통해 해석되며 객체화(DOM)된 대상이 가지는 상태에 대한 속성
+    console.log($input.prop('disabled')); //true
+
+</script>
+</body>
+</html>

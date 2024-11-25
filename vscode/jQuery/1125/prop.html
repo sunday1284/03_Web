@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button>실행</button>  <br><br>
+    체크박스(checked) : 
+    <input id="chkBox" type="checkbox" checked> <br><br>
+    콤보박스(selected) :
+     <select id="selBox">
+        <option value="">하나</option>
+        <option value="">둘</option>
+        <option value="" selected>셋</option>
+     </select> <br><br>
+     text객체(readonly) :
+     <input id="txt" type="text" readonly>  <br><br>
+     button객체(disabled) :
+     <button id="btn" disabled onclick="alert()">연습용</button>
+
+<script src="../../js/jquery-3.7.1.js"></script>
+<script>
+    $('button').eq(0).on('click',function(){
+        let $chk = $('#chkBox').prop('checked');
+        let $sel = $('#selBox option').eq(2).prop('selected');
+        let $txt = $('#txt').prop('readonly');
+        let $btn = $('#btn').prop('disabled');
+
+        console.log($chk, $sel, $txt, $btn);
+
+        $('#chkBox').prop('checked',!$chk);
+        $('#selBox option').eq(2).prop('selected', !$sel);
+        $('#txt').prop('readonly', !$txt);
+        $('#btn').prop('disabled', !$btn);
+    });
+</script>
+
+    <hr>
+    <input type="checkbox" id="all">전체선택
+    <input type="checkbox" class="chk">1
+    <input type="checkbox" class="chk">2
+    <input type="checkbox" class="chk">3
+    <input type="checkbox" class="chk">4
+    <input type="checkbox" class="chk">5
+
+<script>
+    $('#all').on('click',function(){
+       let allChk = $(this).prop('checked'); //(checked속성값get)상태 속성 값 얻기 
+
+
+       //1~5항목의 체크박스 영역에 전체선택 속성값을 그대로 반영시키기
+      $('.chk').prop('checked', allChk);
+    });
+
+    //1~5항목으로 제어하기
+    $('.chk').on('click',function(){
+
+        //1~5까지 모두선택(true)되었을때 전체선택도 선택(true)되게함 
+        //1~5항목의 전체갯수 vs 실제 선택된 항목의 갯수
+        let allChk = $('.chk').length;
+        let chkVal = $('.chk:checked').length;
+        
+        console.log(allChk, " vs ", chkVal);
+
+        if(allChk == chkVal)
+            $('#all').prop('checked',true);
+        else
+            $('#all').prop('checked',false);
+    });
+
+</script>
+</body>
+</html>

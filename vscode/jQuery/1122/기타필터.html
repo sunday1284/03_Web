@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend><a href="javascript:vsb()">:visible</a> / 
+            <a href="javascript:hdn()">:hidden</a>제목</legend>
+        <p>보이는 문단</p>
+        <p style="visibility: hidden;">숨겨진 문단</p>
+        <p style="display: none;">자리를 차지하기 못한 문단</p>
+        <p style="opacity: 0.4;">투명한 문단</p>
+    </fieldset>
+
+<script src="../../js/jquery-3.7.1.js"></script>
+<script>
+function vsb () {
+    $('p:visible').each(function(){
+        console.log(this);
+    });
+}
+function hdn () {
+    $('p:hidden').each((i,v) => { //사용시에만 매개변수 선언, 
+        console.log(v);         //두번째 매개변수만 사용할 예정이라도 첫번째까지 선언필요
+    });
+}
+
+</script>
+</body>
+</html>

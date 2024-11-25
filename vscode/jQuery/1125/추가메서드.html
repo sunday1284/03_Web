@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    p {
+        border: 3px double green;
+        width: 30%;
+        /* margin: 20px 30%; */
+        display: inline-block;
+    }
+    img {
+        width: 50px;
+        height: 50px;
+    }
+    </style>
+<script src="../../js/jquery-3.7.1.js"></script>
+<script>
+
+$(function(){
+    $('p').on('click',function(){
+
+       let $txtSrc = $(this).text(); //파일명 정보 얻기
+       let $ttlAlt = $(this).attr('title'); //타이틀 정보 얻기
+       console.log($txtSrc,$ttlAlt);
+
+       $('<img src="../../images/' + $txtSrc + 
+       '"alt="' + $ttlAlt + '"title="내부 뒷쪽">').appendTo(this);
+
+       let $newImg = $(`<img src=' ../../images/${$txtSrc}' 
+       alt=${$ttlAlt} title='외부 앞쪽'>`)
+       $(this).before($newImg);
+
+       //prepend(자식), prependTo(부모) - 요소 내부 앞쪽
+       //before(자식), insertBefore(부모) - 요소 외부 앞쪽
+       //after(자식), insertAfter(부모) - 요소 외부 뒷쪽
+
+       //새요소 생성 - jq2 
+       $('<img>',{
+        src : '../../images/' + $txtSrc,
+        alt : $ttlAlt,
+        title : '외부 뒷쪽'
+       }).insertAfter(this);
+
+    });
+});
+
+
+
+</script>
+</head>
+<body>
+    <p title="꽐라">ala.jpg</p> <br>
+    <p title="베라4">bara4.jfif</p> <br>
+    <p title="베라6">bara6.webp</p> <br>
+    <p title="베라1">bara1.jpg</p> <br>
+</body>
+</html>
