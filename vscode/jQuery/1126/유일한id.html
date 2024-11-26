@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    /* 스타일 위치에서의 중복된 id는 별도의 오류없이 모든 대상을 상대로 적용 */
+    #s1 {
+        background-color: gold;
+    }
+    </style>
+</head>
+<body>
+    <span id="s1">4</span>
+    <span id="s1">1</span>
+    <span id="s1">2</span>
+    <span id="s1">3</span>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    //스크립트 상에서는 중복되는 id속성값 중 최상단 대상만을 유일한 대상으로 평가한다.
+    console.log($('#s1').text());
+</script>  
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #p1 {
+        color: red;
+    }
+    </style>
+</head>
+<body>
+    <p id="p1">인수로 true설정시 이벤트처리기도 함께 복사1</p>
+    <p id="p1">인수로 true설정시 이벤트처리기도 함께 복사2</p>
+    <input type="button" value="clone()"> <!-- 얇은 복사, default -->
+    <input type="button" value="clone(true)"> <!-- 깊은 복사 -->
+    <div>
+
+
+        <p id="p1">인수로 true설정시 이벤트처리기도 함께 복사</p>
+    </div>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+    //id의 진짜 주인을 찾기
+    $('#p1').css('color','green');
+
+    $('#p1').on('click',function(){
+        $(this).css('font-size', '+=2px');
+    });
+
+
+    $('[value="clone()"]').click(function(){
+        let $cl = $('#p1').clone(); //복사 후 선택된 상태
+        // let $cl = $('p').eq(1).clone(); //복사 후 선택된 상태
+        // let $cl2 = $('p').eq(2).clone(); //복사 후 선택된 상태
+        $('div').append($cl)//div내부 뒷쪽에 붙여넣기
+    });
+
+    $('[value="clone(true)"]').on('click',function(){
+        let $clDeep = $('#p1').clone(true); //요소 및 이벤트 복사 후 선택된 상태
+        $clDeep.appendTo($('div')); //div내부 뒷쪽에 붙이기
+    });
+
+    
+</script>
+</body>
+</html>

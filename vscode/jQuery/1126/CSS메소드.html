@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .clrLime{
+        color: lime;
+    }
+    .bgPurple{
+        background-color: purple;
+    }
+    .brdOlive{
+        border: 2px dashed olive;
+        border-radius: 10px;
+    }
+    div:empty {
+        padding: 30px;
+    }
+    </style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(function(){
+    $('input').on('click',function(){
+        // $('p').css('color','red'); //우선순위가 높음
+        $('p').addClass('clrLime'); //유지보수성은 더 높음
+    });
+
+    $('p').click(function(){
+        // $(this).addClass('bgPurple');
+        // console.log($(this).hasClass('bgPurple'));//?
+
+      /*   if($(this).hasClass('bgPurple')){
+
+            //제거 - removeClass
+            $(this).removeClass('bgPurple');
+        }else{
+            //반영 - addClass
+            $(this).addClass('bgPurple');
+        } */
+
+        $(this).toggleClass('bgPurple');
+
+    });
+
+   /*  $('div:empty').on('mouseover',function(){
+        $(this).addClass('brdOlive');
+    }); */
+
+    
+   /*  $('div:empty').on('mouseout',function(){
+        $(this).removeClass('brdOlive');
+    }); */
+
+    /* $('div:empty').hover(function(){
+        $(this).addClass('brdOlive');
+    },function(){
+        $(this).removeClass('brdOlive');
+    }); */
+
+    $('div:empty').on('dbclick',function(){
+        $(this).toggleClass('brdOlive');
+    });
+
+});
+</script>
+</head>
+<body>
+    <div class="box">
+        <input type="button" value="확인">
+
+        <p>클릭!</p>
+        <p>클릭!</p>
+        <p>클릭!</p>
+        <p>클릭!</p>
+
+        <div></div>
+    </div>
+</body>
+</html>

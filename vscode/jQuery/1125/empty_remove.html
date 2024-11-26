@@ -29,20 +29,27 @@ p {
   <p id="pp">jQuery입니다</p>
 
 <script>
+  //empty() -대상요소의 자식만 지움
 	$(':button').eq(0).click(function(){
-    $('div').eq(0).empty(); //대상요소의 자식만 지움
+    $('div').eq(0).empty(); 
 	});
 
+  //remove() - 대상요소와 그 자식까지 모두 지움
 	$('button:nth-child(2)').click(function(){
-    $('div:nth-of-type(2)').remove(); //대상요소와 그 자식까지 모두 지움
+    // $('body :nth-of-type(5)').remove(); 
+    $('div:nth-of-type(2)').remove();
 	});
 	
+  //remove(selector) - 대상요소 중 특정한 선택자만 지움
 	$('button:nth-of-type(3)').click(function(){
     // $('p').remove();
-    $('p').remove('#pp'); //:nth-child(7)
+    // 표준 문서 상  id가 유일해야하고, 스트립트 상에서 최상단에 정의된 항목만 id의 진짜 대상으로 평가받는데,
+    //  현재 동일한 두 id로 모두 삭제되는 현상은 오류(버그)로 볼 수 있음...
+    // $('p').remove('#pp'); //같은 id가 전부 지워짐
+    // $(':nth-child(7)').remove();
 		
     //참고
-    // $('p').remove('p:nth-of-type(1)'); //모든 p요소들 중 첫번째 대상
+    $('p').remove('p:nth-of-type(1)'); //모든 p요소들 중 첫번째 대상
 		// $('p').remove(':nth-of-type(1)');
 	});
 </script>

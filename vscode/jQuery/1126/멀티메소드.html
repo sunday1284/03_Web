@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 필터로 특정 선택자를 반환 -->
+     <ul>
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+     </ul>
+     <input type="button" value="filter()">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $('input').click(function(){
+        //선택자 활용
+        $('li').filter(':even').css('color', 'red');
+
+        //변수 활용
+        let list2 = $('li').eq(1);
+        $('li').filter(list2).css('background-color', 'green');
+
+        //함수 활용 
+        $('li').filter(function(idx,elem){
+            console.log(idx, elem);
+            //선택자로 사용할 필터링된 대상을 반환하기
+            return idx == 0 || $(elem).text() == 2
+
+        }).css({'text-decoration' : 'underline', 'color' : 'blue'});
+
+    });
+
+    $(function(){
+
+        $('p').click(function(){
+
+            //p의 부모가 id=d1인 div 영역 내부의 div인가?
+            console.log($(this).parent().is('#d1 div'));
+            if($(this).parent().is('#d1 div')){
+                $(this).css('backgroundColor','gold');
+            } else {
+                alert("나의 부모는 " + $(this).parent().attr('id'));
+            }
+
+        });
+
+
+    });
+</script>
+    <div id="d1">
+        <div>
+            <p>부모(div)있는p</p>
+        </div>
+        <p>부모없는p</p>
+        <div>
+            <p>부모(div)있는p</p>
+        </div>
+        <form id="frm">
+            <p>부모(form)있는p</p>
+        </form>
+    </div>
+</body>
+</html>

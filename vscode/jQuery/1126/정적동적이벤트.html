@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        #wrapper {
+            border: 10px inset gray;
+        }
+        .ott {
+            border: 2px solid rosybrown;
+            margin: 10px;
+        }
+    </style>
+
+<body>
+    
+    <div id="wrapper">
+        <div class="ott">넷플릭스</div>
+        <div class="ott">디즈니+</div>
+        <div class="ott">티빙</div>
+        <div class="ott">쿠팡tv</div>
+    </div>
+
+    <script>
+        //class=ott인 항목에 클릭이벤트 부여하기 -js
+        const classott = document.querySelectorAll('.ott');
+        const parent = document.querySelector("#wrapper");
+        for(let i=0; i<classott.length; i++){
+            //bind방식 이벤트 부여
+            classott[i].addEventListener('click',function(){
+                alert("재밌다" + classott[i].innerText);
+
+            });
+        }
+
+        //동적 요소 생성하기 - js
+        //1. 메소드 사용해서 새요소 생성하기
+        let v_div = document.createElement('div');
+        v_div.className = "ott";
+        v_div.innerText = "유튜브";
+        // console.log(v_div);
+        //원하는 영역에 추가 -append(node대상도), appendChild(node 대상만)
+        parent.append(v_div);
+
+        //2.DOMString으로 새요소 생성하기
+
+        //기본적으로 동적요소는 이벤트 부여 대상이 아니다
+        //동적요소의 정적인 부모에게 이벤트를 부여하고 위임받아 사용한다.
+        parent.addEventListener('click',function(e){
+            // console.log(e.target.innerText); //클릭된 대상요소의 정보를 반환
+            alert(e.target.innerText);
+
+            //내부 자식 영역 외 여백을 눌렀을 때 경고창 띄우지 않기
+            console.log("id속성의 유무를 조건문에 사용 >> ", e.target.id);
+
+            //js - 자동형변환을 제공하는 동적타입언어
+            // "", 0, null, undefined... 등등의 falsy속성을 false로 변환처리
+            if(!e.target.id){ //id속성이 없을 때만
+                alert(e.target.innerText);  //실행 
+            }
+        });
+
+    </script>
+</body>
+</html>

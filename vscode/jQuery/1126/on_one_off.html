@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.sttBg {
+    background-color: black;
+    color: white;
+}
+.dynmBg {
+    background-color: hotpink;
+    color: lime;
+}
+.fontGold {
+    color: gold;
+}
+.fontNew {
+    color: blue;
+    font-size: 1.2em;
+}
+</style>
+</head>
+<body>
+    <p>on(event[,selector][,data],fn) / one(event[,data],fn) / off(event[,selector][,fn])</p>
+</body>
+<script src="../../js/jquery-3.7.1.js"></script>
+<script>
+    //jQuery방식 이벤트 부여하기 1 - on('event',fnc) 
+    //jQuery방식 이벤트 부여하기 2 - 이벤트(fnc)
+    $('p').on('click',function(){
+        //스타일 addClass
+        $(this).addClass("sttBg");
+    });
+</script>
+</html>
