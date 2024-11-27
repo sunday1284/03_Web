@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        border: 2px double gainsboro;
+        padding: 20px;
+    }
+    </style>
+</head>
+<body>
+    <button>추가</button>
+    <button>해제</button>
+    <div></div>
+    <div></div>
+<script src="../../js/jquery-3.7.1.js"></script>
+<script src="../../js/random.js"></script>
+<script>
+    const $btn = $('button');
+
+    let count = 0;
+
+    //bind방식
+    // $btn.eq(0).on('click',function(){
+    //delegate방식
+    $(document).on('click',$btn.eq(0),function(){
+
+        //새버튼 생성 
+        // $('<button>',{
+        //     text : '새로운 버튼'
+        // }).appendTo('div');
+        count++;
+        $('<button>새로운버튼' +count + '</button>').appendTo($('div').eq(0));
+
+        //두번째 div영역에 랜덤 배경색 지정하기 - rgb(255,255,255)
+        const ranArr = []; //빈배열
+        for(let i = 0; i<3; i++){
+            ranArr[i] = random(0,255);
+        }
+        $('div').eq(1).css('backgroundColor', 'rgb(' +ranArr + ')');
+    });
+    
+    $btn.eq(1).click(function(){
+        // 해제 기능 이벤트
+        // $btn.eq(0).off('click');
+        $(document).off('click');
+    })
+
+</script>
+</body>
+</html>

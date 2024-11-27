@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file">
+    <input type="button" value="추가">
+    <div>
+        <!-- 새요소 -->
+    </div>
+<script src="../../js/jquery-3.7.1.js"></script>
+<script>
+    //$('[type=button]')
+    let count = 1;
+    $(':button').on('click',function(){
+        //새요소 생성 - p요소 내부 파일선택영역과 삭제버튼
+        const $new = $(`<p><input type="file"><input type="button" value="삭제${count}"></p>`);
+        $('div').append($new);
+        count++;
+    });
+
+    //삭제버튼 - 동적 요소 - 이벤트 delegate방식으로 접근
+    // $('div').on('click',$('input').eq(1),function(){
+    $('div').on('click','[type=button]',function(){
+        console.log(this);
+        $(this).parent().remove(); //대상요소와 그 자식까지 모두 지움
+    });
+</script>
+</body>
+</html>

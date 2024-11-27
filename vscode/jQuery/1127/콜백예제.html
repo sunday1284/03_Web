@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //함수 정의
+        function login(username, fncall){
+            setTimeout(function(){
+                fncall(username);   
+            },1000);
+        }
+        function addToCart(product, fncall){
+            setTimeout(()=>{
+                fncall(product);   
+            },1000);
+        }
+        function makePayment(cardNo,product, fncall){
+            setTimeout(()=>{
+                fncall(cardNo,product);   
+            },1000);
+        }
+
+        //함수 호출
+        login('히어로',(username) => {
+            console.log(`${username}님 안녕하세요`);
+        });
+        addToCart('딸기시루',(product) => {
+            console.log(`${product}를 장바구니에 담음`);
+        });
+        makePayment('1234123412', '딸기시루', (cardNo,product) => {
+            console.log(`${cardNo}으로 ${product}를 구매`);
+        });
+
+
+        //콜백함수로 동기적인 흐름의 결과를 제공하기 
+        login('히어로',(username) => {
+            console.log(`${username}님 안녕하세요`);
+            addToCart('딸기시루',(product) => {
+                console.log(`${product}를 장바구니에 담음`);
+                makePayment('1234123412', '딸기시루', (cardNo,product) => {
+                    console.log(`${cardNo}으로 ${product}를 구매`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

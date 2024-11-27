@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <select id="sido">
+        <option value="">안녕하세요</option>
+        <option value="1">대전광역시</option>
+        <option value="2">서울특별시</option>
+        <option value="3">세종시</option>
+    </select>
+    <select id="gugun"></select>
+
+    <p>클릭~!!</p>
+<script src="../../js/jquery-3.7.1.js"></script>
+<script>
+    $('#sido').change(function(e,index){
+        console.log(typeof index);// number
+
+        /*
+        let v_opt = "<option>대덕구</option>";
+        v_opt += "<option>동구</option>";
+        v_opt += "<option>서구</option>";
+        v_opt += "<option>유성구</option>";
+        v_opt += "<option>중구</option>";
+
+        $('#gugun').html(v_opt);*/
+
+        let v_opt = "";
+
+        //선택된 정보 값 - 단일속성값은 value로 간단히 얻음
+        console.log(this.value);
+        if(this.value) index = this.value;
+
+        console.log(typeof index); // string
+        
+        //넘어온 매개변수정보에 대한 옵션 반영하기 
+        if(index == '1'){ //대전
+            v_opt += "<option>대덕구</option>";
+            v_opt += "<option>동구</option>";
+            v_opt += "<option>서구</option>";
+            v_opt += "<option>유성구</option>";
+            v_opt += "<option>중구</option>";
+        }else if(index == 2){ //서울
+            v_opt += "<option>중구</option>";
+            v_opt += "<option>마포구</option>";
+            v_opt += "<option>용산구</option>";
+            v_opt += "<option>서초구</option>";
+            v_opt += "<option>동작구</option>";
+        }else if(index == 3){ //세종
+            v_opt += "<option>갑</option>";
+            v_opt += "<option>을</option>";
+        }else {
+            v_opt += "<option>🤣</option>";
+        }
+        $('#gugun').html(v_opt);
+    });
+    
+    //trigger() - 이벤트 강제로 실행
+    $('#sido').trigger('change',1);
+    $('#sido option').eq(1).prop('selected',true); //선택되지 않은 항목에 대한 설정 
+
+    //사용자 정의 이벤트 
+    // >> 어떤 행위(action)에 대해 정의되어있는 이벤트가 아니므로 트리거를 통해 실행가능
+    $('p').on('customEvent', function(e,a,b){ //첫번째 매개변수는 이벤트 객체가 넘어옴
+        alert("!!" + a[1] + a['two'] + b);    //두번째 매개변수로부터 parameter가 넘어옴
+    });
+    // $('p').trigger('customEvent', '함수로연결된정보1',"두번째부터는 무시됨"); //강제 실행
+    //여러 데이터 전달시 배열, 객체를 활용한다.
+
+    //배열형태의 데이터는 각 index정보가 각 매개변수로 매칭된다.
+    // $('p').trigger('customEvent', [1: '함수로연결된정보1', "두번째부터는 무시됨"]); //강제 실행
+    
+    //객체형태의 데이터는
+    $('p').trigger('customEvent', {1: '함수로연결된정보1',two : "두번째부터는 무시됨"}); //강제 실행
+    
+
+
+</script>
+</body>
+</html>

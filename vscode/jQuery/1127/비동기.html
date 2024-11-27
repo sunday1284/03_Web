@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function main(cb){
+    setTimeout(() => {
+        console.log("1.서버에서 데이터 처리후 결과를 받아오기");
+        cb({name:'히어로'});
+    }, 2000);
+}
+main(function(data){
+    console.log("2.후처리의 최종결과 >> " + data.name);
+});
+
+</script>
+</body>
+</html>
