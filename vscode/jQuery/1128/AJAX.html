@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const req = new XMLHttpRequest();
+
+    //요청설정
+    req.open('get','test.txt'); //  2 arguments required (3번째는 true가 기본값-비동기처리-이며 생략가능)
+    //요청전달
+    req.send();
+
+    // req.abort(); //요청 취소 
+    //응답
+    req.onreadystatechange =function(){
+        console.log(req.readyState);
+        console.log(req.status, req.statusText);
+        //200 - 클라이언트 요청이 서버에서 성공적으로 처리됨을 알리는 코드 
+        //300 - (redirection)처리를 위한 추가동작이 필요함을 알리는 코드(=재요청필요)
+        //400 - 클라이언트 측 에러 (= 요청 정보 오류 등)
+        //500 - 서버 측 에러 (서버 부하, 처리과정 중 오류, 예외 발생 등의 여러 오류)
+
+        //처리 성공을 알리는 두 코드값이 충족되면 
+        if(req.readyState == 4 && req.status == 200){
+            //응답받기 기능 
+            console.log("서버를 통해 받은 응답 >> ", req.responseText);
+        }
+
+        console.log(req.getAllResponseHeaders()); //응답데이터의 모든 헤더정보 반환
+        console.log(req.getAllResponseHeaders('content-type')); //헤더 중 특정항목만 반환
+    };
+    
+
+
+
+</script>   
+</body>
+</html>

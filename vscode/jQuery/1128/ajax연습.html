@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button>CSV</button>
+    <button>JSON</button>
+    <button>XML</button>
+    <div></div>
+    
+<script>
+    //객체 생성 XMLHttpRequest
+    const ajax = new XMLHttpRequest();
+    //요청정보 설정 open() - url로 test.txt
+    ajax.open('get','./sample/test.txt');
+    //요청 전달 send()
+    ajax.send();
+
+    //응답 - test.txt의 정보를 콘솔로 출력하기 
+    //onreadystatechange, readyState, status, responseText
+    ajax.onreadystatechange = function(){
+        if(ajax.readyState == 4 && ajax.status == 200){
+            console.log( ajax.responseText );
+        }
+    };
+
+    document.querySelector('button').addEventListener('click',function(){
+        //ajax로 test.csv파일 정보 콘솔에 출력하기
+        const req = new XMLHttpRequest();
+        req.open('get','./sample/test.csv');
+        req.send();
+        req.onreadystatechange = function(){
+            if(req.readyState == 4 && req.status == 200){
+                //바깥쪽 함수로 정보를 옮겨서.. 실행문 작성..
+                f_csv(req.responseText);
+            }
+        }
+    });
+
+    function f_csv(p_csv){
+        //넘어온 csv정보를 콤마로 나눠서 테이블 각 셀에 배치..
+        // console.log("정보 확인>> \r\n" ,  p_csv);
+
+        let v_lines = p_csv.split("\r\n"); //줄넘김기호로 한줄씩 정보 나눔
+        console.log( v_lines);
+
+        //테이블 요소처럼 계층구조를 가진 요소들은 (메소드 사용보다) 문자열로 작성하는게 더 효율적
+        let v_tbl = "<table border=1>";
+        for(let i=0; i<v_lines.length; i++){
+            v_tbl += "<tr>";
+            
+                let v_cells = v_lines[i].split(",");
+                console.log( v_cells);
+
+                for(let i=0; i<v_cells.length; i++){
+                    v_tbl += "<td>" + v_cells[i] +"</td>";
+                }
+
+            v_tbl += "</tr>";
+        }
+        v_tbl += "</table>";
+
+        // document.querySelector('body').innerHTML += v_tbl;
+        document.querySelector('div').innerText = ""; //공간 초기화
+        document.querySelector('div').insertAdjacentHTML('beforeend',v_tbl);
+    };
+
+    const btn = document.querySelectorAll('button');
+    btn[1].addEventListener('click',function(){
+        let rst;
+        let req = new XMLHttpRequest();
+        req.open('get','sample/test.json');
+        req.addEventListener('readystatechange',function(){
+            if(req.readyState == 4 && req.status == 200){
+
+                rst = req.responseText; //문자열 정보
+                // console.log("1>>>", rst);
+                f_json(rst);
+            }
+        });
+        req.send();
+        // console.log("2>>>", rst); //비동기 처리시 undefined발생
+    });
+    
+    let f_json = function(p_json){
+        // console.log(p_json); //string
+        // console.log(JSON.parse(p_json)); //string ==> object
+
+        const objArr = JSON.parse(p_json);
+        // console.log(objArr.length);
+
+        //테이블로 정보 배치하기
+        let v_tbl = "<table border=1>";
+        
+        //넘어온 객체 배열 정보 중 key정보만 추출하여 제목으로 활용...
+        //Object.keys() -> 각 객체의 키 정보만 배열로 반환하는 결과
+        console.log(">>>", objArr[0] ); //4개 객체중 하나 선택
+        console.log(">>>", Object.keys(objArr[0]) ); //객체의 key만 뽑아냄
+
+        let objKey = Object.keys(objArr[0]); //3개 key정보
+
+        // v_tbl += "<tr><th>" + objKey[0] + "</th><th>type</th><th>alias</th></tr>"; //제목 행 추가
+        v_tbl += `<tr><th>${objKey[0]}</th><th>${objKey[1]}</th><th>${objKey[2]}</th></tr>`; //제목 행 추가
+
+        
+        for(let i=0; i<objArr.length; i++){
+            v_tbl += `<tr>
+                        <td>${objArr[i].name}</td>
+                        <td>${objArr[i].type}</td>
+                        <td>${objArr[i].alias}</td>
+                    </tr>`;
+        }
+        v_tbl += "</table>";
+
+        document.querySelector('div').innerText = ""; //공간 초기화가 선행되어야 함
+        //insert~HTML()는 기존 요소 뒤에 덧붙여 추가하므로 계속적인 요소 추가가 싫으면
+        document.querySelector('div').insertAdjacentHTML('beforeend',v_tbl);
+    };
+
+    btn[2].addEventListener('click',function(){
+        const req = new XMLHttpRequest();
+        req.open('get','sample/test.xml');
+        req.onreadystatechange = function(){
+            if(req.readyState == 4 && req.status == 200){
+                // console.log(req.responseText); //문자열로 정보를 얻으면 내부정보에 접근하기 힘듦
+                f_xml(req.responseXML); //XML형식대로 제공
+            }
+        };
+        req.send();
+    });
+    let f_xml = p_xml => {
+        console.log( p_xml); //XML문서에도 DOM API활용 가능
+        
+                                                       //nodeType- 요소노드>텍스트노드
+        // console.log( p_xml.querySelectorAll('friend')[0].children[0].firstChild.nodeValue); //텍스트노드까지 접근 후 노드속성 사용
+        // console.log( p_xml.querySelectorAll('friend')[0].children[0].textContent); //요소노드까지 접근 후 노드속성 사용
+        // console.log( p_xml.querySelectorAll('friend')[0].children[0].innerText); //노드대상에 사용불가한 속성이므로 undefined제공
+        
+        let v_tbl = "<table border=1>";
+        
+        let friends = p_xml.querySelectorAll('friend'); //4개의 friend범위요소를 제공
+        for(let i=0; i<friends.length; i++){
+            v_tbl += "<tr>";
+            
+            let child = friends[i].children; //자식요소 3개 얻기
+            for(let i=0; i<child.length; i++){
+                // v_tbl += `<td>${child[i].textContent}</td>`;
+                v_tbl += `<td> 🎨${child[i].firstChild.data}</td>`;
+            }
+            
+            v_tbl += "</tr>";
+        }
+        v_tbl += "</table>";
+
+        document.querySelector('div').innerHTML += v_tbl;
+
+    }; 
+        
+        
+        
+        
+        
+        
+</script>    
+</body>
+</html>
