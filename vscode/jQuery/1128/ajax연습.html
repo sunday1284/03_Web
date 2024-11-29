@@ -74,7 +74,6 @@
         req.open('get','sample/test.json');
         req.addEventListener('readystatechange',function(){
             if(req.readyState == 4 && req.status == 200){
-
                 rst = req.responseText; //문자열 정보
                 // console.log("1>>>", rst);
                 f_json(rst);
